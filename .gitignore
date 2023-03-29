@@ -1,0 +1,14 @@
+# Proyectos de Referencia #
+###################
+Doc/Misc/
+
+# Archivos de Compilacion #
+###################
+Store/Store/bin/
+Store/Store/obj/
+
+Store/StoreAPI/bin/
+Store/StoreAPI/obj/
+
+Store/StoreModels/bin/
+Store/StoreModels/obj/
