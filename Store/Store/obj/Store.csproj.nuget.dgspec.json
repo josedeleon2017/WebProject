@@ -4,14 +4,14 @@
     "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\Store.csproj": {}
   },
   "projects": {
-    "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\Store.csproj": {
+    "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\Store.csproj",
-        "projectName": "Store",
-        "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\Store.csproj",
+        "projectUniqueName": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj",
+        "projectName": "StoreModels",
+        "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj",
         "packagesPath": "C:\\Users\\50241\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\obj\\",
+        "outputPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\50241\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,71 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\Store.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\Store.csproj",
+        "projectName": "Store",
+        "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\Store.csproj",
+        "packagesPath": "C:\\Users\\50241\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\50241\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj": {
+                "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
