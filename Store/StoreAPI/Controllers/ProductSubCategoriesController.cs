@@ -65,14 +65,17 @@ namespace StoreAPI.Controllers
         // PUT: api/ProductSubCategories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductSubCategory(int id, ProductSubCategory productSubCategory)
+        public async Task<IActionResult> PutProductSubCategory(int id, mProductSubCategory productSubCategory)
         {
             if (id != productSubCategory.ProductSubCategoryId)
             {
                 return BadRequest();
             }
-
-            _context.Entry(productSubCategory).State = EntityState.Modified;
+            var subCategoryBase = _context.ProductSubCategories.FirstOrDefault(x => x.ProductSubCategoryId == id);
+            if (subCategoryBase != null)
+            {
+                subCategoryBase.Name = productSubCategory.Name;
+            }
 
             try
             {

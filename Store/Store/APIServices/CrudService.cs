@@ -1,16 +1,32 @@
-﻿using Newtonsoft.Json;
+﻿using MessagePack;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Differencing;
+using Microsoft.VisualBasic;
+using Microsoft.VisualStudio.Web.CodeGeneration.Utils;
+using Newtonsoft.Json;
 using StoreAPI.Models;
+using System;
+using System.Diagnostics.Metrics;
+using System.Drawing;
+using System.Numerics;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Store.APIServices
 {
-    public static class ProductCategoryService
+    public class CrudService<K, V> : IDisposable
     {
-        const int TIME_OUT = 150;
-        const string URL = $"https://localhost:7122/api/ProductCategories";
+        private const int TIME_OUT = 150;
+        private string _url = $"https://localhost:7122/api/";
 
-        public static async Task<IEnumerable<mProductCategory>> GetProductCategories()
+        public CrudService(string route)
+        {
+            _url += route;
+        }
+        public async Task<IEnumerable<V>> GetAll()
         {
             HttpClientHandler clientHandler = new()
             {
@@ -22,11 +38,11 @@ namespace Store.APIServices
                 Timeout = TimeSpan.FromSeconds(TIME_OUT)
             };
 
-            HttpResponseMessage response = await httpClient.GetAsync(URL);
+            HttpResponseMessage response = await httpClient.GetAsync(_url);
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                return JsonConvert.DeserializeObject<IEnumerable<mProductCategory>>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<IEnumerable<V>>(await response.Content.ReadAsStringAsync());
             }
             else
             {
@@ -34,7 +50,7 @@ namespace Store.APIServices
             }
         }
 
-        public static async Task<mProductCategory> GetProductCategory(int id)
+        public async Task<V> GetOne(K id)
         {
             HttpClientHandler clientHandler = new()
             {
@@ -46,11 +62,11 @@ namespace Store.APIServices
                 Timeout = TimeSpan.FromSeconds(TIME_OUT)
             };
 
-            HttpResponseMessage response = await httpClient.GetAsync($"{URL}/{id}");
+            HttpResponseMessage response = await httpClient.GetAsync($"{_url}/{id}");
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                return JsonConvert.DeserializeObject<mProductCategory>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<V>(await response.Content.ReadAsStringAsync());
             }
             else
             {
@@ -58,7 +74,7 @@ namespace Store.APIServices
             }
         }
 
-        public static async Task<mProductCategory> AddProductCategory(mProductCategory category)
+        public async Task<V> Add(V category)
         {
             var json = JsonConvert.SerializeObject(category);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -73,11 +89,11 @@ namespace Store.APIServices
                 Timeout = TimeSpan.FromSeconds(TIME_OUT)
             };
 
-            HttpResponseMessage response = await httpClient.PostAsync(URL, content);
+            HttpResponseMessage response = await httpClient.PostAsync(_url, content);
 
             if (response.StatusCode == System.Net.HttpStatusCode.Created)
             {
-                return JsonConvert.DeserializeObject<mProductCategory>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<V>(await response.Content.ReadAsStringAsync());
             }
             else
             {
@@ -85,7 +101,7 @@ namespace Store.APIServices
             }
         }
 
-        public static async Task<mProductCategory> UpdateProductCategory(int id, mProductCategory category)
+        public async Task<V> Update(K id, V category)
         {
             var json = JsonConvert.SerializeObject(category);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -100,11 +116,11 @@ namespace Store.APIServices
                 Timeout = TimeSpan.FromSeconds(TIME_OUT)
             };
 
-            HttpResponseMessage response = await httpClient.PutAsync($"{URL}/{id}", content);
+            HttpResponseMessage response = await httpClient.PutAsync($"{_url}/{id}", content);
 
             if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
-                return JsonConvert.DeserializeObject<mProductCategory>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<V>(await response.Content.ReadAsStringAsync());
             }
             else
             {
@@ -112,7 +128,7 @@ namespace Store.APIServices
             }
         }
 
-        public static async Task<mProductCategory> DeleteProductCategory(int id)
+        public async Task<V> Delete(K id)
         {
             HttpClientHandler clientHandler = new()
             {
@@ -124,16 +140,21 @@ namespace Store.APIServices
                 Timeout = TimeSpan.FromSeconds(TIME_OUT)
             };
 
-            HttpResponseMessage response = await httpClient.DeleteAsync($"{URL}/{id}");
+            HttpResponseMessage response = await httpClient.DeleteAsync($"{_url}/{id}");
 
-            if (response.StatusCode == System.Net.HttpStatusCode.Accepted)
+            if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
             {
-                return JsonConvert.DeserializeObject<mProductCategory>(await response.Content.ReadAsStringAsync());
+                return JsonConvert.DeserializeObject<V>(await response.Content.ReadAsStringAsync());
             }
             else
             {
                 throw new Exception(response.StatusCode.ToString());
             }
+        }
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
         }
     }
 }

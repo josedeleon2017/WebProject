@@ -1,77 +1,121 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Store.APIServices;
+using StoreAPI.Models;
 
 namespace Store.Controllers
 {
     public class ProductSubCategoryController : Controller
     {
-        // GET: ProductSubCategory
-        public ActionResult Index()
+        private string _apiControllerName = "ProductSubCategories";
+
+        /// <summary>
+        /// Obtains all the subcategories from the API
+        /// </summary>
+        /// <returns>A view with all the subcategories</returns>
+        public async Task<IActionResult> Index()
         {
-            return View();
+            using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
+            {
+                return View(await service.GetAll());
+            }
         }
 
-        // GET: ProductSubCategory/Details/5
-        public ActionResult Details(int id)
+        /// <summary>
+        /// Obtains one subcategory from the API
+        /// </summary>
+        /// <param name="id">primary key of dbo.ProductSubCategory</param>
+        /// <returns>A view with one specific subcategory</returns>
+        public async Task<IActionResult> Details(int id)
         {
-            return View();
+            using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
+            {
+                return View(await service.GetOne(id));
+            }
         }
 
-        // GET: ProductSubCategory/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ProductSubCategory/Create
+        /// <summary>
+        /// Insert one new subcategory object
+        /// </summary>
+        /// <param name="category">object subcategory to insert</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(mProductSubCategory subcategory)
         {
-            try
+            if (ModelState.IsValid)
             {
+                using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
+                {
+                    await service.Add(subcategory);
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            return View(subcategory);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
             {
-                return View();
+                return View(await service.GetOne(id));
             }
         }
 
-        // GET: ProductSubCategory/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ProductSubCategory/Edit/5
+        /// <summary>
+        /// Update a subcategory object
+        /// </summary>
+        /// <param name="id">primary key of dbo.ProductSubCategory</param>
+        /// <param name="category">object subcategory to update</param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, mProductSubCategory subcategory)
         {
-            try
+            if (id != subcategory.ProductSubCategoryId)
             {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
+                {
+                    await service.Update(id, subcategory);
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            return View(subcategory);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
             {
-                return View();
+                return View(await service.GetOne(id));
             }
         }
 
-        // GET: ProductSubCategory/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: ProductSubCategory/Delete/5
-        [HttpPost]
+        /// <summary>
+        /// Delete a category object
+        /// </summary>
+        /// <param name="id">primary key of dbo.ProductCategory</param>
+        /// <returns></returns>
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> ConfirmDelete(int id)
         {
             try
             {
+                using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
+                {
+                    await service.Delete(id);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

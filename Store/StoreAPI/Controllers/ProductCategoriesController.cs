@@ -60,8 +60,11 @@ namespace StoreAPI.Controllers
             {
                 return BadRequest();
             }
-            var categorytoUpdate = new ProductCategory() { ProductCategoryId = productCategory.ProductCategoryId, Name = productCategory.Name };
-            _context.Entry(categorytoUpdate).State = EntityState.Modified;
+            var categoryBase = _context.ProductCategories.FirstOrDefault(x => x.ProductCategoryId == id);
+            if (categoryBase != null)
+            {
+                categoryBase.Name = productCategory.Name;
+            }
 
             try
             {
@@ -115,7 +118,7 @@ namespace StoreAPI.Controllers
             _context.ProductCategories.Remove(productCategory);
             await _context.SaveChangesAsync();
 
-            return Accepted();
+            return NoContent();
         }
 
         private bool ProductCategoryExists(int id)
