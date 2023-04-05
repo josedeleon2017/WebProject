@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Store.APIServices;
 using StoreAPI.Models;
 
@@ -9,41 +10,34 @@ namespace Store.Controllers
     {
         private string _apiControllerName = "ProductSubCategories";
 
-        /// <summary>
-        /// Obtains all the subcategories from the API
-        /// </summary>
-        /// <returns>A view with all the subcategories</returns>
         public async Task<IActionResult> Index()
         {
+            using (var service = new CrudService<int, mProductCategory>("ProductCategories"))
+            {
+                var categories = await service.GetAll();
+                ViewBag.Categories = categories.ToDictionary(keySelector: m => m.ProductCategoryId, elementSelector: m => m.Name);
+            }
             using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
             {
                 return View(await service.GetAll());
             }
         }
 
-        /// <summary>
-        /// Obtains one subcategory from the API
-        /// </summary>
-        /// <param name="id">primary key of dbo.ProductSubCategory</param>
-        /// <returns>A view with one specific subcategory</returns>
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Create()
         {
-            using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
+            using (var service = new CrudService<int, mProductCategory>("ProductCategories"))
             {
-                return View(await service.GetOne(id));
+                var categories = await service.GetAll();
+                IEnumerable<SelectListItem> items = categories.Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.ProductCategoryId.ToString()
+                });
+                ViewBag.CategoriesList = items;
             }
-        }
-
-        public ActionResult Create()
-        {
             return View();
         }
 
-        /// <summary>
-        /// Insert one new subcategory object
-        /// </summary>
-        /// <param name="category">object subcategory to insert</param>
-        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(mProductSubCategory subcategory)
@@ -53,6 +47,7 @@ namespace Store.Controllers
                 using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
                 {
                     await service.Add(subcategory);
+                    TempData["success"] = "Category created succesfully!";
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -63,16 +58,22 @@ namespace Store.Controllers
         {
             using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
             {
-                return View(await service.GetOne(id));
+                var subcategory = await service.GetOne(id);
+                using (var serviceSec = new CrudService<int, mProductCategory>("ProductCategories"))
+                {
+                    var categories = await serviceSec.GetAll();
+                    IEnumerable<SelectListItem> items = categories.Select(x => new SelectListItem
+                    {
+                        Text = x.Name,
+                        Value = x.ProductCategoryId.ToString(),
+                        Selected = (subcategory.ProductCategoryId == x.ProductCategoryId)
+                    });
+                    ViewBag.CategoriesList = items;
+                }
+                return View(subcategory);
             }
         }
 
-        /// <summary>
-        /// Update a subcategory object
-        /// </summary>
-        /// <param name="id">primary key of dbo.ProductSubCategory</param>
-        /// <param name="category">object subcategory to update</param>
-        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, mProductSubCategory subcategory)
@@ -87,6 +88,7 @@ namespace Store.Controllers
                 using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
                 {
                     await service.Update(id, subcategory);
+                    TempData["success"] = "Category updated succesfully!";
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -97,31 +99,12 @@ namespace Store.Controllers
         {
             using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
             {
-                return View(await service.GetOne(id));
+                await service.Delete(id);
+                TempData["success"] = "SubCategory deleted succesfully!";
+                return RedirectToAction(nameof(Index));
             }
         }
 
-        /// <summary>
-        /// Delete a category object
-        /// </summary>
-        /// <param name="id">primary key of dbo.ProductCategory</param>
-        /// <returns></returns>
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ConfirmDelete(int id)
-        {
-            try
-            {
-                using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
-                {
-                    await service.Delete(id);
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+
     }
 }

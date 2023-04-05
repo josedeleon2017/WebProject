@@ -9077,9 +9077,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\Store.csproj",
-      "projectName": "Store",
-      "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\Store.csproj",
+      "projectUniqueName": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\StoreMVC.csproj",
+      "projectName": "StoreMVC",
+      "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\StoreMVC.csproj",
       "packagesPath": "C:\\Users\\50241\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\obj\\",
       "projectStyle": "PackageReference",

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreAPI.Models;
+using StoreDataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,6 +76,7 @@ namespace StoreAPI.Controllers
             if (subCategoryBase != null)
             {
                 subCategoryBase.Name = productSubCategory.Name;
+                subCategoryBase.ProductCategoryId = productSubCategory.ProductCategoryId;
             }
 
             try

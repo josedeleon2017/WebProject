@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreAPI.Models;
+using StoreDataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

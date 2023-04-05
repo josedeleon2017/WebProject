@@ -19,7 +19,7 @@ namespace Store.APIServices
 {
     public class CrudService<K, V> : IDisposable
     {
-        private const int TIME_OUT = 150;
+        private const int TIME_OUT = 10;
         private string _url = $"https://localhost:7122/api/";
 
         public CrudService(string route)

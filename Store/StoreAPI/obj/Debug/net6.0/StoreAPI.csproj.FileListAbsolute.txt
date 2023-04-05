@@ -289,3 +289,5 @@ C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\obj\Debug\net6.0\refint\StoreAPI.d
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\obj\Debug\net6.0\StoreAPI.pdb
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\obj\Debug\net6.0\StoreAPI.genruntimeconfig.cache
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\obj\Debug\net6.0\ref\StoreAPI.dll
+C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\StoreDataAccess.dll
+C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\StoreDataAccess.pdb

@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Store.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Store.bundle.scp.css"
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\StoreMVC.bundle.scp.css",
+      "PackagePath": "staticwebassets\\StoreMVC.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\css\\style.css",
@@ -1909,20 +1909,20 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Store.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.StoreMVC.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Store.props",
-      "PackagePath": "build\\Store.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.StoreMVC.props",
+      "PackagePath": "build\\StoreMVC.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Store.props",
-      "PackagePath": "buildMultiTargeting\\Store.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.StoreMVC.props",
+      "PackagePath": "buildMultiTargeting\\StoreMVC.props"
     },
     {
-      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Store.props",
-      "PackagePath": "buildTransitive\\Store.props"
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.StoreMVC.props",
+      "PackagePath": "buildTransitive\\StoreMVC.props"
     }
   ],
   "ElementsToRemove": []
