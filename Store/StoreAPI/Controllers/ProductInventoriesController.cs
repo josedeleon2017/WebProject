@@ -59,7 +59,7 @@ namespace StoreAPI.Controllers
         // PUT: api/ProductInventories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductInventory(int id, ProductInventory productInventory)
+        public async Task<IActionResult> PutProductInventory(int id, mProductInventory productInventory)
         {
             if (id != productInventory.ProductId)
             {

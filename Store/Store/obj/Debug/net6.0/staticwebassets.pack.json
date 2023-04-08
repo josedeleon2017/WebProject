@@ -89,12 +89,24 @@
       "PackagePath": "staticwebassets\\assets\\img\\slides-1.jpg"
     },
     {
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\img\\slides-11.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\slides-11.jpg"
+    },
+    {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\img\\slides-2.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\slides-2.jpg"
     },
     {
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\img\\slides-22.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\slides-22.jpg"
+    },
+    {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\img\\slides-3.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\slides-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\img\\slides-33.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\slides-33.jpg"
     },
     {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\js\\main.js",
@@ -1917,8 +1929,8 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\storage\\products\\1b95b712-92c8-4df8-8ae5-acdb71e71151.jpg",
-      "PackagePath": "staticwebassets\\storage\\products\\1b95b712-92c8-4df8-8ae5-acdb71e71151.jpg"
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\storage\\products\\f31403d8-c191-4417-b84f-2cf466432a08.jpg",
+      "PackagePath": "staticwebassets\\storage\\products\\f31403d8-c191-4417-b84f-2cf466432a08.jpg"
     },
     {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\storage\\products\\product_default.jpg",

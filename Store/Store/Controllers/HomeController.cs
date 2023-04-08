@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Store.APIServices;
 using Store.Models;
+using StoreModels.Models;
+using StoreMVC.Models;
 using System.Diagnostics;
 
 namespace Store.Controllers
@@ -16,6 +19,20 @@ namespace Store.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+        public async Task<IActionResult> Principal()
+        {
+            var content = new ProductsCategoriesVM();
+            using (var service = new CrudService<int, mProduct>("Products"))
+            {
+                content.Products = await service.GetAll();
+            }
+            using (var service = new CrudService<int, mProductCategory>("ProductCategories"))
+            {
+                content.Categories = await service.GetAll();
+            }
+            return View(content);
         }
 
         public IActionResult Privacy()

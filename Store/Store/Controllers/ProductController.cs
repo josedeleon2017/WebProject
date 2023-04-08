@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Store.APIServices;
 using StoreModels.Models;
+using System.Net.WebSockets;
 
 namespace Store.Controllers
 {
@@ -86,20 +87,45 @@ namespace Store.Controllers
         // GET: ProductController/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
+            //Obtiene el product
+            mProduct product;
+            using (var service = new CrudService<int, mProduct>(_apiControllerName))
+            {
+                product = await service.GetOne(id);
+            }
+            //Obtiene el Id del padre
+            int categoryId;
+            using (var service = new CrudService<int, mProductSubCategory>("ProductSubCategories"))
+            {
+                var result = await service.GetOne(product.ProductSubCategoryId);
+                categoryId = result.ProductCategoryId;
+            }
+            //Obtiene todos los padres y selecciona el especifico
             using (var service = new CrudService<int, mProductCategory>("ProductCategories"))
             {
                 var categories = await service.GetAll();
                 IEnumerable<SelectListItem> items = categories.Select(x => new SelectListItem
                 {
                     Text = x.Name,
-                    Value = x.ProductCategoryId.ToString()
+                    Value = x.ProductCategoryId.ToString(),
+                    Selected = x.ProductCategoryId == categoryId
                 });
                 ViewBag.CategoriesList = items;
             }
-            using (var service = new CrudService<int, mProduct>(_apiControllerName))
+            //Obtiene todos los hijos con base al padre
+            using (var service = new CrudService<int, mProductSubCategory>("ProductSubCategories"))
             {
-                return View(await service.GetOne(id));
+                var subcategories = await service.GetAll();
+                var subFilter = subcategories.Where(x => x.ProductCategoryId == categoryId);
+                IEnumerable<SelectListItem> items = subFilter.Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.ProductSubCategoryId.ToString(),
+                    Selected = x.ProductSubCategoryId == product.ProductSubCategoryId
+                });
+                ViewBag.SubCategoriesList = items;
             }
+            return View(product);
         }
 
         // POST: ProductController/Edit/5

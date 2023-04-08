@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0ZtGwkung/y8aHLHySofmaNEcZtT3XaaCFDR4eCZ3U0=",
+  "Hash": "F0eH4SWQO4YRbxoAXlCOrbkcd62iEnyTSVpy+gAa4xE=",
   "Source": "StoreMVC",
   "BasePath": "_content/StoreMVC",
   "Mode": "Default",
@@ -408,6 +408,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\slides-1.jpg"
     },
     {
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\img\\slides-11.jpg",
+      "SourceId": "StoreMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\",
+      "BasePath": "_content/StoreMVC",
+      "RelativePath": "assets/img/slides-11.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slides-11.jpg"
+    },
+    {
       "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\img\\slides-2.jpg",
       "SourceId": "StoreMVC",
       "SourceType": "Discovered",
@@ -425,6 +442,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\slides-2.jpg"
     },
     {
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\img\\slides-22.jpg",
+      "SourceId": "StoreMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\",
+      "BasePath": "_content/StoreMVC",
+      "RelativePath": "assets/img/slides-22.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slides-22.jpg"
+    },
+    {
       "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\img\\slides-3.jpg",
       "SourceId": "StoreMVC",
       "SourceType": "Discovered",
@@ -440,6 +474,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\slides-3.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\img\\slides-33.jpg",
+      "SourceId": "StoreMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\",
+      "BasePath": "_content/StoreMVC",
+      "RelativePath": "assets/img/slides-33.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\slides-33.jpg"
     },
     {
       "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\assets\\js\\main.js",
@@ -8177,12 +8228,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\storage\\products\\1b95b712-92c8-4df8-8ae5-acdb71e71151.jpg",
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\storage\\products\\f31403d8-c191-4417-b84f-2cf466432a08.jpg",
       "SourceId": "StoreMVC",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\",
       "BasePath": "_content/StoreMVC",
-      "RelativePath": "storage/products/1b95b712-92c8-4df8-8ae5-acdb71e71151.jpg",
+      "RelativePath": "storage/products/f31403d8-c191-4417-b84f-2cf466432a08.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -8191,7 +8242,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\storage\\products\\1b95b712-92c8-4df8-8ae5-acdb71e71151.jpg"
+      "OriginalItemSpec": "wwwroot\\storage\\products\\f31403d8-c191-4417-b84f-2cf466432a08.jpg"
     },
     {
       "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store\\wwwroot\\storage\\products\\product_default.jpg",

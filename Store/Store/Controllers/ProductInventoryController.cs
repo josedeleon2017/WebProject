@@ -32,12 +32,12 @@ namespace StoreMVC.Controllers
                 using (var service = new CrudService<int, mProductInventory>(_apiControllerName))
                 {
                     await service.Add(productInventory);
-                    TempData["success"] = "Product inventory registered succesfully!";
+                    TempData["success"] = "ProductInventory registered succesfully!";
                 }
+
+                //Actualiza los campos del inventario en Product
                 using (var service = new CrudService<int, mProduct>("Products"))
                 {
-                    //ActiveFlag se actualizará automáticamente Quantity <= 0
-                    //LowStock dependerá sí en la tabla dbo.ProductInventory, SafetyStockLevel <= Quantity
                     var productUpdate = await service.GetOne(productInventory.ProductId);
                     productUpdate.ActiveFlag = (productInventory.Quantity > 0);
                     productUpdate.LowStock = (productInventory.Quantity <= productInventory.SafetyStockLevel);
@@ -95,12 +95,24 @@ namespace StoreMVC.Controllers
             }
             if (ModelState.IsValid)
             {
+                //Actualiza el registro de Inventory
                 using (var service = new CrudService<int, mProductInventory>(_apiControllerName))
                 {
                     await service.Update(id, productInventory);
-                    TempData["success"] = "Product inventory updated succesfully!";
+                    TempData["success"] = "ProductInventory updated succesfully!";
                 }
-                return RedirectToAction(nameof(Index));
+
+                //Actualiza los campos del inventario en Product
+                using (var service = new CrudService<int, mProduct>("Products"))
+                {
+                    //ActiveFlag se actualizará automáticamente Quantity <= 0
+                    //LowStock dependerá sí en la tabla dbo.ProductInventory, SafetyStockLevel <= Quantity
+                    var productUpdate = await service.GetOne(productInventory.ProductId);
+                    productUpdate.ActiveFlag = (productInventory.Quantity > 0);
+                    productUpdate.LowStock = (productInventory.Quantity <= productInventory.SafetyStockLevel);
+                    await service.Update(productInventory.ProductId, productUpdate);
+                }
+                return RedirectToAction("Inventory", new { id });
             }
             return View(productInventory);
         }
