@@ -1,0 +1,7 @@
+CAMBIO 4-4-2023
+Se eliminó la referencia de dbo.ProductPhoto a dbo.Product
+Se agrego el campo ImagePath a dbo.Product
+Posteriormente se implementará el almacenamiento de productos con multiples imagenes
+
+ALTER TABLE Product
+	ADD ImagePath nvarchar(MAX);

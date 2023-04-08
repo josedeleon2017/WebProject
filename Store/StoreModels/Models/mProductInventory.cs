@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mProductInventory
 {
@@ -12,6 +12,4 @@ public partial class mProductInventory
     public int SafetyStockLevel { get; set; }
 
     public int ReordePoint { get; set; }
-
-    public virtual mProduct Product { get; set; } = null!;
 }

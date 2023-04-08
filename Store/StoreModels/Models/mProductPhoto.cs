@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mProductPhoto
 {
@@ -16,6 +16,4 @@ public partial class mProductPhoto
     public string PhotoPath { get; set; } = null!;
 
     public int OrderDisplay { get; set; }
-
-    public virtual mProduct Product { get; set; } = null!;
 }

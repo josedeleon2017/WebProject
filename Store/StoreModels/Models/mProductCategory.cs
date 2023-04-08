@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mProductCategory
 {

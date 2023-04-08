@@ -27,9 +27,9 @@ public partial class Product
 
     public bool? ActiveFlag { get; set; }
 
-    public virtual ProductInventory? ProductInventory { get; set; }
+    public string ImagePath { get; set; } = null!;
 
-    public virtual ICollection<ProductPhoto> ProductPhotos { get; } = new List<ProductPhoto>();
+    public virtual ProductInventory? ProductInventory { get; set; }
 
     public virtual ICollection<ProductReview> ProductReviews { get; } = new List<ProductReview>();
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mShoppingCartItem
 {
@@ -14,8 +14,4 @@ public partial class mShoppingCartItem
     public int OrderQty { get; set; }
 
     public DateTime DateCreated { get; set; }
-
-    public virtual mCustomer Customer { get; set; } = null!;
-
-    public virtual mProduct Product { get; set; } = null!;
 }

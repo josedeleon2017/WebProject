@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mVendor
 {
@@ -18,6 +18,4 @@ public partial class mVendor
     public bool ActiveFlag { get; set; }
 
     public string? PurchasingWebServicesUrl { get; set; }
-
-    public virtual ICollection<mProductVendor> ProductVendors { get; } = new List<mProductVendor>();
 }

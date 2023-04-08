@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mPermission
 {
@@ -14,6 +14,4 @@ public partial class mPermission
     public string Description { get; set; } = null!;
 
     public bool ActiveFlag { get; set; }
-
-    public virtual mRole Role { get; set; } = null!;
 }

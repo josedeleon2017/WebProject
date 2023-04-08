@@ -1,4 +1,4 @@
-﻿@model StoreAPI.Models.mProductSubCategory
+﻿@model StoreModels.Models.mProductSubCategory
 
 @{
     ViewData["Title"] = "Edit SubCategory";
@@ -25,11 +25,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input asp-for="ProductSubCategoryId" class="form-control" type="hidden" />
             <div class="row">
-            <div class="form-group col-6">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
+                <div class="form-group col-6">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
                 <div class="form-group col-6">
                     <label asp-for="ProductCategoryId" class="control-label">ProductCategory</label>
                     <select asp-for="ProductCategoryId" asp-items="ViewBag.CategoriesList" class="form-control">
@@ -47,5 +47,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

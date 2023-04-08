@@ -33,7 +33,6 @@ C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.DiaSymR
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.DotNet.Scaffolding.Shared.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
@@ -41,7 +40,6 @@ C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Extensi
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
@@ -66,7 +64,6 @@ C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.VisualS
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Mono.TextTemplating.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\NuGet.Common.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\NuGet.Configuration.dll
@@ -80,7 +77,6 @@ C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\NuGet.Versioning.
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.CodeDom.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Composition.AttributedModel.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Composition.Convention.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Composition.Hosting.dll
@@ -94,8 +90,6 @@ C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Reflection
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Runtime.Caching.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Security.Permissions.dll
-C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Text.Encodings.Web.dll
-C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Text.Json.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Windows.Extensions.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\de\Microsoft.CodeAnalysis.resources.dll
@@ -264,7 +258,6 @@ C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\runtimes\unix\lib
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\StoreModels.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\StoreModels.pdb
@@ -289,5 +282,10 @@ C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\obj\Debug\net6.0\refint\StoreAPI.d
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\obj\Debug\net6.0\StoreAPI.pdb
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\obj\Debug\net6.0\StoreAPI.genruntimeconfig.cache
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\obj\Debug\net6.0\ref\StoreAPI.dll
-C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\StoreDataAccess.dll
-C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\StoreDataAccess.pdb
+C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\Mono.TextTemplating.dll
+C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.CodeDom.dll
+C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\50241\Desktop\NEW_WEB\Store\StoreAPI\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

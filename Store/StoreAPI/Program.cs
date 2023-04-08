@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using StoreDataAccess.Models;
+using StoreAPI.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

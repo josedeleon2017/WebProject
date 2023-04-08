@@ -3782,20 +3782,6 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "StoreDataAccess/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "7.0.4",
-          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.4"
-        },
-        "compile": {
-          "bin/placeholder/StoreDataAccess.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/StoreDataAccess.dll": {}
-        }
-      },
       "StoreModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -10736,11 +10722,6 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "StoreDataAccess/1.0.0": {
-      "type": "project",
-      "path": "../Store.DataAccess/StoreDataAccess.csproj",
-      "msbuildProject": "../Store.DataAccess/StoreDataAccess.csproj"
-    },
     "StoreModels/1.0.0": {
       "type": "project",
       "path": "../StoreModels/StoreModels.csproj",
@@ -10749,10 +10730,11 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Microsoft.EntityFrameworkCore >= 7.0.4",
+      "Microsoft.EntityFrameworkCore.Design >= 7.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.4",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.13",
-      "StoreDataAccess >= 1.0.0",
       "StoreModels >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
@@ -10784,9 +10766,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store.DataAccess\\StoreDataAccess.csproj": {
-              "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\Store.DataAccess\\StoreDataAccess.csproj"
-            },
             "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj": {
               "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj"
             }
@@ -10803,6 +10782,16 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[7.0.4, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[7.0.4, )"
+          },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[7.0.4, )"

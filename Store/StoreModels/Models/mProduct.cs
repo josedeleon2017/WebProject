@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mProduct
 {
@@ -26,4 +26,6 @@ public partial class mProduct
     public bool? LowStock { get; set; }
 
     public bool? ActiveFlag { get; set; }
+
+    public string ImagePath { get; set; } = null!;
 }

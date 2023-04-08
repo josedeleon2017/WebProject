@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.APIServices;
-using StoreAPI.Models;
+using StoreModels.Models;
 
 namespace Store.Controllers
 {
@@ -66,13 +66,15 @@ namespace Store.Controllers
             return View(category);
         }
 
+        [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
             using (var service = new CrudService<int, mProductCategory>(_apiControllerName))
             {
                 TempData["success"] = "Category deleted succesfully!";
                 await service.Delete(id);
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return Json(new { success = true });
             }
         }
 

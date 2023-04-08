@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Store.APIServices;
-using StoreAPI.Models;
+using StoreModels.Models;
 
 namespace Store.Controllers
 {
@@ -95,16 +95,26 @@ namespace Store.Controllers
             return View(subcategory);
         }
 
+        [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
             using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
             {
                 await service.Delete(id);
                 TempData["success"] = "SubCategory deleted succesfully!";
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return Json(new { success = true });
             }
         }
 
-
+        [HttpPost]
+        public async Task<JsonResult> GetSubCategories(string CategoryId)
+        {
+            using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
+            {
+                var subCategoriesFilter = await service.GetAll();
+                return Json(new SelectList(subCategoriesFilter.Where(x => x.ProductCategoryId.ToString() == CategoryId), "ProductSubCategoryId", "Name"));
+            }
+        }
     }
 }

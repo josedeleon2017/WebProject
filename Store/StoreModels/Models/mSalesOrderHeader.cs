@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mSalesOrderHeader
 {
@@ -40,12 +40,4 @@ public partial class mSalesOrderHeader
     public decimal TotalDue { get; set; }
 
     public string? Comment { get; set; }
-
-    public virtual mCustomer Customer { get; set; } = null!;
-
-    public virtual ICollection<mSalesOrderDetail> SalesOrderDetails { get; } = new List<mSalesOrderDetail>();
-
-    public virtual mAddress ShipToAddress { get; set; } = null!;
-
-    public virtual mShipMethod ShipToMethod { get; set; } = null!;
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mShipMethod
 {
@@ -12,6 +12,4 @@ public partial class mShipMethod
     public decimal ShipBase { get; set; }
 
     public decimal ShipRate { get; set; }
-
-    public virtual ICollection<mSalesOrderHeader> SalesOrderHeaders { get; } = new List<mSalesOrderHeader>();
 }

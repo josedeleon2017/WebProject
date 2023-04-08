@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mRegion
 {
@@ -10,6 +10,4 @@ public partial class mRegion
     public string Name { get; set; } = null!;
 
     public string Code { get; set; } = null!;
-
-    public virtual ICollection<mState> States { get; } = new List<mState>();
 }

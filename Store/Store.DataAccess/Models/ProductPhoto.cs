@@ -16,6 +16,4 @@ public partial class ProductPhoto
     public string PhotoPath { get; set; } = null!;
 
     public int OrderDisplay { get; set; }
-
-    public virtual Product Product { get; set; } = null!;
 }

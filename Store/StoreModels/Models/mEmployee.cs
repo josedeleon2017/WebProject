@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mEmployee
 {
@@ -30,12 +30,4 @@ public partial class mEmployee
     public string? PhotoExtension { get; set; }
 
     public string? PhotoPath { get; set; }
-
-    public virtual ICollection<mPromotion> Promotions { get; } = new List<mPromotion>();
-
-    public virtual ICollection<mPurchaseOrderHeader> PurchaseOrderHeaderEmployeeIdapproverNavigations { get; } = new List<mPurchaseOrderHeader>();
-
-    public virtual ICollection<mPurchaseOrderHeader> PurchaseOrderHeaderEmployeeIdcreatorNavigations { get; } = new List<mPurchaseOrderHeader>();
-
-    public virtual mRole Role { get; set; } = null!;
 }

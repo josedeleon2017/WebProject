@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StoreAPI.Models.mProductSubCategory>
+﻿@model IEnumerable<StoreModels.Models.mProductSubCategory>
 
 @{
     ViewData["Title"] = "SubCategory Panel";
@@ -28,43 +28,44 @@
 <div class="row">
     <div class="col-6">
         <table class="table table-sm">
-    <thead>
-        <tr>
-
+            <thead>
+                <tr>
                     <th scope="col">
-                Name
-            </th>
+                        Name
+                    </th>
                     <th scope="col">
                         Category
                     </th>
-
                     <th scope="col">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
                         <td>
                             @ViewBag.Categories[item.ProductCategoryId]
-                            @*@Html.DisplayFor(modelItem => item.ProductCategoryId)*@
                         </td>
-            <td>
+                        <td>
                             <div class="btn-group" role="group">
                                 <a asp-action="Edit" asp-controller="ProductSubCategory" asp-route-id="@item.ProductSubCategoryId" class="btn btn-primary">
                                     <i class="bi bi-pencil-square"></i>&nbsp; Edit
                                 </a>
-                                <a asp-action="Delete" asp-controller="ProductSubCategory" asp-route-id="@item.ProductSubCategoryId" class="btn btn-danger">
+                                <a onClick=Delete('/productsubcategory/delete/@item.ProductSubCategoryId') class="btn btn-danger">
                                     <i class="bi bi-trash-fill"></i>&nbsp; Delete
                                 </a>
                             </div>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
+
+@section Scripts{
+    <script src="~/js/deleteAction.js"></script>
+}

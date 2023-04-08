@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mSalesOrderDetail
 {
@@ -18,8 +18,4 @@ public partial class mSalesOrderDetail
     public decimal UnitPriceDiscount { get; set; }
 
     public decimal LineTotal { get; set; }
-
-    public virtual mProduct Product { get; set; } = null!;
-
-    public virtual mSalesOrderHeader SalesOrder { get; set; } = null!;
 }

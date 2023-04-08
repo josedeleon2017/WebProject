@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mProductReview
 {
@@ -20,6 +20,4 @@ public partial class mProductReview
     public string Comment { get; set; } = null!;
 
     public DateTime ModifiedDate { get; set; }
-
-    public virtual mProduct Product { get; set; } = null!;
 }

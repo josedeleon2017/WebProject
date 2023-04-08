@@ -191,11 +191,6 @@ public partial class StoreContext : DbContext
             entity.Property(e => e.PhotoExtension).HasMaxLength(10);
             entity.Property(e => e.PhotoFileName).HasMaxLength(50);
             entity.Property(e => e.ProductId).HasColumnName("ProductID");
-
-            entity.HasOne(d => d.Product).WithMany(p => p.ProductPhotos)
-                .HasForeignKey(d => d.ProductId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_ProductPhoto_Product");
         });
 
         modelBuilder.Entity<ProductReview>(entity =>

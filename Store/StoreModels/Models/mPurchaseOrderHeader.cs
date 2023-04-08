@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreAPI.Models;
+namespace StoreModels.Models;
 
 public partial class mPurchaseOrderHeader
 {
@@ -26,10 +26,4 @@ public partial class mPurchaseOrderHeader
     public decimal Freight { get; set; }
 
     public decimal TotalDue { get; set; }
-
-    public virtual mEmployee EmployeeIdapproverNavigation { get; set; } = null!;
-
-    public virtual mEmployee EmployeeIdcreatorNavigation { get; set; } = null!;
-
-    public virtual ICollection<mPurchaseOrderDetail> PurchaseOrderDetails { get; } = new List<mPurchaseOrderDetail>();
 }
