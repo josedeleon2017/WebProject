@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l909C1M5NQe72Wr1a67298EVAAYtdu1ZDjk57OPD+bb+9mNr3pTJ3gLED27ZwyJSF+Kn1sCKQm5XRkMa3dUM6Q==",
+  "dgSpecHash": "po1N/w2twry+drRWrLgB1b7hGW3XlQ6antPeYzp7NJ3PcM+wXBPLtmiHuHuUd+EpMkLDg/QrupeeqiPu9MG9FA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreAPI\\StoreAPI.csproj",
+  "projectFilePath": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreAPI\\StoreAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\50241\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\50241\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

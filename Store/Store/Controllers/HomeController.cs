@@ -2,6 +2,7 @@
 using Store.APIServices;
 using Store.Models;
 using StoreModels.Models;
+using StoreMVC.APIServices;
 using StoreMVC.Models;
 using System.Diagnostics;
 
@@ -24,15 +25,23 @@ namespace Store.Controllers
         public async Task<IActionResult> Principal()
         {
             var content = new ProductsCategoriesVM();
-            using (var service = new CrudService<int, mProduct>("Products"))
+            using (var service = new ProductServices())
             {
-                content.Products = await service.GetAll();
+                content.Products = await service.GetProductsUser();
             }
             using (var service = new CrudService<int, mProductCategory>("ProductCategories"))
             {
                 content.Categories = await service.GetAll();
             }
             return View(content);
+        }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            using (var service = new ProductServices())
+            {
+                return View(await service.GetOneProductUser(id));
+            }
         }
 
         public IActionResult Privacy()

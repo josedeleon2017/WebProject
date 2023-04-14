@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj": {}
+    "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreModels\\StoreModels.csproj": {}
   },
   "projects": {
-    "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj": {
+    "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreModels\\StoreModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj",
+        "projectUniqueName": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreModels\\StoreModels.csproj",
         "projectName": "StoreModels",
-        "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj",
+        "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreModels\\StoreModels.csproj",
         "packagesPath": "C:\\Users\\50241\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\obj\\",
+        "outputPath": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreModels\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\50241\\AppData\\Roaming\\NuGet\\NuGet.Config",

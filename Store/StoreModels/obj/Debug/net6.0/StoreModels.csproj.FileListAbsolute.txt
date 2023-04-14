@@ -10,3 +10,15 @@ C:\Users\50241\Desktop\NEW_WEB\Store\StoreModels\obj\Debug\net6.0\StoreModels.dl
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreModels\obj\Debug\net6.0\refint\StoreModels.dll
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreModels\obj\Debug\net6.0\StoreModels.pdb
 C:\Users\50241\Desktop\NEW_WEB\Store\StoreModels\obj\Debug\net6.0\ref\StoreModels.dll
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\bin\Debug\net6.0\StoreModels.deps.json
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\bin\Debug\net6.0\StoreModels.dll
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\bin\Debug\net6.0\StoreModels.pdb
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\obj\Debug\net6.0\StoreModels.csproj.AssemblyReference.cache
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\obj\Debug\net6.0\StoreModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\obj\Debug\net6.0\StoreModels.AssemblyInfoInputs.cache
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\obj\Debug\net6.0\StoreModels.AssemblyInfo.cs
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\obj\Debug\net6.0\StoreModels.csproj.CoreCompileInputs.cache
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\obj\Debug\net6.0\StoreModels.dll
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\obj\Debug\net6.0\refint\StoreModels.dll
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\obj\Debug\net6.0\StoreModels.pdb
+C:\Users\50241\Desktop\NEW_WEB2.0\WebProject\Store\StoreModels\obj\Debug\net6.0\ref\StoreModels.dll

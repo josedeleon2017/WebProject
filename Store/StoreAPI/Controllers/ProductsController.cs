@@ -48,6 +48,25 @@ namespace StoreAPI.Controllers
             return listResult;
         }
 
+        [HttpGet("user")]
+        public async Task<ActionResult<IEnumerable<mProduct>>> GetProductsUser()
+        {
+            if (_context.Products == null)
+            {
+                return NotFound();
+            }
+            var listResult = new List<mProduct>();
+            await _context.Products.ForEachAsync(x => listResult.Add(new mProduct()
+            {
+                ProductId = x.ProductId,
+                Name = x.Name,
+                ListPrice = x.ListPrice,
+                ImagePath = x.ImagePath,
+                ActiveFlag = x.ActiveFlag
+            }));
+            return listResult.Where(x => Convert.ToBoolean(x.ActiveFlag)).ToList();
+        }
+
         // GET: api/Products/5
         [HttpGet("{id}")]
         public async Task<ActionResult<mProduct>> GetProduct(int id)
@@ -76,6 +95,33 @@ namespace StoreAPI.Controllers
                 SellStartDate = product.SellStartDate,
                 ActiveFlag = product.ActiveFlag,
                 LowStock = product.LowStock,
+                ImagePath = product.ImagePath,
+            };
+            return result;
+        }
+
+        // GET: api/Products/5
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<mProduct>> GetProductUser(int id)
+        {
+            if (_context.Products == null)
+            {
+                return NotFound();
+            }
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            var result = new mProduct()
+            {
+                ProductId = product.ProductId,
+                Name = product.Name,
+                Description = product.Description,
+                Specifications = product.Specifications,
+                ListPrice = product.ListPrice,
                 ImagePath = product.ImagePath,
             };
             return result;

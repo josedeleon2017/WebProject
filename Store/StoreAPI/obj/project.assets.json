@@ -10745,11 +10745,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreAPI\\StoreAPI.csproj",
+      "projectUniqueName": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreAPI\\StoreAPI.csproj",
       "projectName": "StoreAPI",
-      "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreAPI\\StoreAPI.csproj",
+      "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreAPI\\StoreAPI.csproj",
       "packagesPath": "C:\\Users\\50241\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreAPI\\obj\\",
+      "outputPath": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\50241\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -10766,8 +10766,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj": {
-              "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB\\Store\\StoreModels\\StoreModels.csproj"
+            "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreModels\\StoreModels.csproj": {
+              "projectPath": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\StoreModels\\StoreModels.csproj"
             }
           }
         }
