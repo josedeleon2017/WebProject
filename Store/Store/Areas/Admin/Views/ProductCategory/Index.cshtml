@@ -1,0 +1,64 @@
+﻿@model IEnumerable<StoreModels.Models.mProductCategory>
+
+@{
+    ViewData["Title"] = "Category Panel";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="pagetitle">
+            <h1>@ViewData["Title"]</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Components</li>
+                    <li class="breadcrumb-item active">Breadcrumbs</li>
+                </ol>
+            </nav>
+        </div><!-- End Breadcrumbs with a page title -->
+    </div>
+    <div class="col-6 text-end">
+        <a asp-controller="ProductCategory" asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-square-fill"></i>
+            &nbsp; Add Category
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a asp-action="Edit" asp-controller="ProductCategory" asp-route-id="@item.ProductCategoryId" class="btn btn-primary">
+                                    <i class="bi bi-pencil-square"></i>&nbsp; Edit
+                                </a>
+                                <a onClick=Delete('/productcategory/delete/@item.ProductCategoryId') class="btn btn-danger">
+                                    <i class="bi bi-trash-fill"></i>&nbsp; Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/js/deleteAction.js"></script>
+}

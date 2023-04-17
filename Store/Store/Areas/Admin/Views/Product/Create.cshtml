@@ -1,0 +1,205 @@
+﻿@model StoreModels.Models.mProduct
+
+@{
+    ViewData["Title"] = "Create Product";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="pagetitle">
+            <h1>@ViewData["Title"]</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Components</li>
+                    <li class="breadcrumb-item active">Breadcrumbs</li>
+                </ol>
+            </nav>
+        </div><!-- End Breadcrumbs with a page title -->
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-5">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" id="Name" onkeyup="displayText()" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label class="control-label">ProductCategory</label>
+                    <select asp-items="ViewBag.CategoriesList" class="form-control" id="CategoryList">
+                        <option disabled selected>-- Select Category --</option>
+                    </select>
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="ProductSubCategoryId" class="control-label">ProductSubCategory</label>
+                    <select asp-for="ProductSubCategoryId" class="form-control" id="SubCategoryList">
+                        <option disabled selected>-- Select SubCategory --</option>
+                    </select>
+                    <span asp-validation-for="ProductSubCategoryId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" id="Description" onkeyup="displayText()"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Specifications" class="control-label"></label>
+                <textarea asp-for="Specifications" class="form-control" id="Specifications" onkeyup="displayText()"></textarea>
+                <span asp-validation-for="Specifications" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label asp-for="ListPrice" class="control-label"></label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input asp-for="ListPrice" class="form-control" id="ListPrice" onkeyup="displayText()">
+                    </div>
+                    <span asp-validation-for="ListPrice" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="StandarCost" class="control-label"></label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input asp-for="StandarCost" class="form-control">
+                    </div>
+                    <span asp-validation-for="StandarCost" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label asp-for="SellStartDate" class="control-label"></label>
+                    <input type="date" asp-for="SellStartDate" class="form-control" />
+                    <span asp-validation-for="SellStartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="SellEndDate" class="control-label"></label>
+                    <input type="date" asp-for="SellEndDate" class="form-control" />
+                    <span asp-validation-for="SellEndDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" type="file" id="photo" name="file">
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-2">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="Index" class="btn btn-danger">Back to Panel</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-7">
+        <h5>Preview</h5>
+        <div class="card mb-3">
+            <div class="row g-0 align-items-center">
+                <div class="col-md-5">
+                    <!-- Slides only carousel -->
+                    <div id="carouselExampleSlidesOnly" class="carousel slide p-4" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="~/storage/products/product_default.jpg" class="d-block w-100" alt="..." id="preview">
+                            </div>
+                        </div>
+                    </div><!-- End Slides only carousel-->
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h5 class="card-title" id="prName">Name</h5>
+                        <p class="card-text fw-bold" id="prListPrice">$00.00</p>
+                        <p class="card-text" id="prDescription">Description</p>
+                        <div class="row">
+                            <div class="col-3">
+                                <input type="number" class="form-control" value="1">
+                            </div>
+                            <div class="col-9">
+                                <a href="#" class="btn btn-success">
+                                    <i class="bi bi-cart-fill"></i>
+                                    &nbsp; Add To Cart
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-2">
+                <!-- Bordered Tabs Justified -->
+                <ul class="nav nav-tabs nav-tabs-bordered d-flex" id="borderedTabJustified" role="tablist">
+                    <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-home" type="button" role="tab" aria-controls="home" aria-selected="true">Specifications</button>
+                    </li>
+                    <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Reviews</button>
+                    </li>
+                </ul>
+                <div class="tab-content pt-2" id="borderedTabJustifiedContent">
+                    <div class="tab-pane fade show active" id="bordered-justified-home" role="tabpanel" aria-labelledby="home-tab">
+                        Specifications
+                    </div>
+                    <div class="tab-pane fade" id="bordered-justified-profile" role="tabpanel" aria-labelledby="profile-tab">
+                        Reviews
+                    </div>
+                </div><!-- End Bordered Tabs Justified -->
+            </div>
+        </div><!-- End Card with an image on left -->
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(() => {
+            $("#photo").change(function () {
+                const file = this.files[0];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function (event) {
+                        $("#preview")
+                            .attr("src", event.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            $("#CategoryList").on("change", function () {
+                $.ajax({
+                    type: "Post",
+                    url: "/ProductSubCategory/GetSubCategories",
+                    data: { "CategoryId": $("#CategoryList").val() },
+                    success: function (response) {
+                        var items = '<option disabled selected>-- Select SubCategory --</option>';
+                        $(response).each(function () {
+                            items += "<option value=" + this.value + ">" + this.text + "</option>";
+                        })
+                        $("#SubCategoryList").html(items);
+                    }
+                })
+            });
+
+        });
+
+
+        function displayText() {
+            var inputText = document.getElementById("Name").value;
+            (inputText.trim() == '' ? document.getElementById("prName").innerHTML = 'Name' : document.getElementById("prName").innerHTML = inputText)
+
+            var inputText = document.getElementById("Description").value;
+            (inputText.trim() == '' ? document.getElementById("prDescription").innerHTML = 'Description' : document.getElementById("prDescription").innerHTML = inputText)
+
+            var inputText = document.getElementById("ListPrice").value;
+            (inputText.trim() == '' ? document.getElementById("prListPrice").innerHTML = '$00.00' : document.getElementById("prListPrice").innerHTML = '$' + inputText)
+
+            var inputText = document.getElementById("Specifications").value;
+            (inputText.trim() == '' ? document.getElementById("bordered-justified-home").innerHTML = 'Specifications' : document.getElementById("bordered-justified-home").innerHTML = inputText)
+        }
+
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

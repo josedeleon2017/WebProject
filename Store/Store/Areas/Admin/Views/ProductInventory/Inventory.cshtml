@@ -1,0 +1,77 @@
+﻿@model StoreModels.Models.mProductInventory
+
+@{
+    ViewData["Title"] = $"Inventory - {ViewBag.Product.Name}";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="pagetitle">
+            <h1>@ViewData["Title"]</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Components</li>
+                    <li class="breadcrumb-item active">Breadcrumbs</li>
+                </ol>
+            </nav>
+        </div><!-- End Breadcrumbs with a page title -->
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="row">
+            <div class="col-8">
+                <h5><span class="text-muted">#@ViewBag.Product.ProductId</span> &nbsp; @ViewBag.Product.Name</h5>
+                <p>
+                    @ViewBag.Product.Description                    
+                    <hr />
+                    @ViewBag.Product.Specifications
+                    <hr />
+                    <span class="fw-bold">Cost: </span> $@ViewBag.Product.StandarCost.ToString("N2") &nbsp; <span class="fw-bold">Price:</span> $@ViewBag.Product.ListPrice.ToString("N2")
+                </p>
+            </div>
+            <div class="col-4">
+                <img src="@ViewBag.Product.ImagePath" height="200" width="200" />
+            </div>
+        </div>
+        <dl class="row">
+            @* <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ProductId)
+            </dt>
+            <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ProductId)
+            </dd>*@
+            <dt class="col-5">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+            <dd class="col-5">
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+            <dt class="col-5">
+                @Html.DisplayNameFor(model => model.SafetyStockLevel)
+            </dt>
+            <dd class="col-5">
+                @Html.DisplayFor(model => model.SafetyStockLevel)
+            </dd>
+            <dt class="col-5">
+                @Html.DisplayNameFor(model => model.ReordePoint)
+            </dt>
+            <dd class="col-5">
+                @Html.DisplayFor(model => model.ReordePoint)
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div>
+    <div class="btn-group" role="group">
+        <a asp-action="Edit" asp-controller="ProductInventory" asp-route-id="@Model.ProductId" class="btn btn-primary">
+            <i class="bi bi-pencil-square"></i>&nbsp; Edit Inventory
+        </a>
+        <a asp-action="Index" asp-controller="Product" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i>&nbsp; Back to Panel
+        </a>
+    </div>
+</div>

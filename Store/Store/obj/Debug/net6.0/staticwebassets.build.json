@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Zmv8TzkXN4F4sOra1sWAuIaiccisNS0eusxCllOmxpU=",
+  "Hash": "R2lW2HXjHPdme/7xysEnxtZy0eJyADvLAtuQBoj7ers=",
   "Source": "StoreMVC",
   "BasePath": "_content/StoreMVC",
   "Mode": "Default",
@@ -8228,12 +8228,12 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\employees\\4915da71-03fc-4a28-aa9d-96559899fff6.jpg",
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\employees\\c6e6925c-bc43-47c0-9159-8c7ac599516a.jpg",
       "SourceId": "StoreMVC",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\",
       "BasePath": "_content/StoreMVC",
-      "RelativePath": "storage/employees/4915da71-03fc-4a28-aa9d-96559899fff6.jpg",
+      "RelativePath": "storage/employees/c6e6925c-bc43-47c0-9159-8c7ac599516a.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -8242,7 +8242,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\storage\\employees\\4915da71-03fc-4a28-aa9d-96559899fff6.jpg"
+      "OriginalItemSpec": "wwwroot\\storage\\employees\\c6e6925c-bc43-47c0-9159-8c7ac599516a.jpg"
     },
     {
       "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\products\\726eda23-13a9-49d4-9570-0fd8f8927ff7.jpg",
