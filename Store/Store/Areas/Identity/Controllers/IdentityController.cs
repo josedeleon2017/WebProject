@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Store.APIServices;
 using StoreModels.Models;
 using StoreMVC.Models;
@@ -22,43 +23,54 @@ namespace StoreMVC.Areas.Identity.Controllers
         }
 
         // POST: IdentityController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(string email, string password)
-        {
-            try
-            {
-                using (var service = new CrudService<int, mCustomer>(_apiControllerName))
-                {
-                    var customers = await service.GetAll();
-                    var customerMatch = customers.FirstOrDefault(x => x.EmailAddress == email);
-                    if (customerMatch == null)
-                    {
-                        TempData["error"] = "Customer not found!";
-                        return View();
-                    }
-                    List<Claim> claims = new List<Claim>()
-                    {
-                        new Claim(ClaimTypes.Name, customerMatch.EmailAddress)
-                    };
-                    ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                    AuthenticationProperties properties = new AuthenticationProperties() { AllowRefresh = true };
-                    await HttpContext.SignInAsync(
-                        CookieAuthenticationDefaults.AuthenticationScheme,
-                        new ClaimsPrincipal(claimsIdentity),
-                        properties);
-                }
-                return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Login(string email, string password)
+        //{
+        //    try
+        //    {
+
+        //        using (var service = new CrudService<int, mCustomer>(_apiControllerName))
+        //        {
+        //            var customers = await service.GetAll();
+        //            var customerMatch = customers.FirstOrDefault(x => x.EmailAddress == email);
+        //            if (customerMatch == null)
+        //            {
+        //                TempData["error"] = "Customer not found!";
+        //                return View();
+        //            }
+        //            List<Claim> claims = new List<Claim>()
+        //            {
+        //                //new Claim(ClaimTypes.Name, customerMatch.EmailAddress)
+        //            };
+        //            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        //            AuthenticationProperties properties = new AuthenticationProperties() { AllowRefresh = true };
+        //            await HttpContext.SignInAsync(
+        //                CookieAuthenticationDefaults.AuthenticationScheme,
+        //                new ClaimsPrincipal(claimsIdentity),
+        //                properties);
+        //        }
+        //        return RedirectToAction("Index", "Home");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
 
         // GET: IdentityController/Edit/5
-        public ActionResult Register()
+        public async Task<IActionResult> Register()
         {
+            using (var service = new CrudService<int, mRegion>("Regions"))
+            {
+                var regions = await service.GetAll();
+                IEnumerable<SelectListItem> items = regions.Select(x => new SelectListItem
+                {
+                    Text = x.Name,
+                    Value = x.RegionId.ToString()
+                });
+                ViewBag.RegionList = items;
+            }
             return View();
         }
 
@@ -93,6 +105,18 @@ namespace StoreMVC.Areas.Identity.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<JsonResult> GetStates(string stateId)
+        {
+            using (var service = new CrudService<int, mState>("States"))
+            {
+                var statesFilter = await service.GetAll();
+                var selectList = new SelectList(statesFilter.Where(x => x.RegionId.ToString() == stateId), "StateId", "Name");
+                return Json(selectList);
             }
         }
 

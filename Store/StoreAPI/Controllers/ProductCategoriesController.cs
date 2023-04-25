@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreAPI.Models;
@@ -22,6 +24,7 @@ namespace StoreAPI.Controllers
         }
 
         // GET: api/ProductCategories
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<mProductCategory>>> GetProductCategories()
         {
@@ -35,6 +38,7 @@ namespace StoreAPI.Controllers
         }
 
         // GET: api/ProductCategories/5
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet("{id}")]
         public async Task<ActionResult<mProductCategory>> GetProductCategory(int id)
         {
@@ -54,6 +58,7 @@ namespace StoreAPI.Controllers
 
         // PUT: api/ProductCategories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductCategory(int id, mProductCategory productCategory)
         {
@@ -88,6 +93,7 @@ namespace StoreAPI.Controllers
 
         // POST: api/ProductCategories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]
         public async Task<ActionResult<mProductCategory>> PostProductCategory(mProductCategory productCategory)
         {
@@ -103,6 +109,7 @@ namespace StoreAPI.Controllers
         }
 
         // DELETE: api/ProductCategories/5
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductCategory(int id)
         {

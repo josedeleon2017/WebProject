@@ -128,6 +128,7 @@ namespace StoreMVC.Areas.Admin.Controllers
                     }
                     employee.PhotoPath = @"\storage\employees\" + fileName;
                 }
+
                 using (var service = new CrudService<int, mEmployee>(_apiControllerName))
                 {
                     using (var serviceAux = new CrudService<int, mEmployee>(_apiControllerName))

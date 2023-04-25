@@ -101,6 +101,7 @@ namespace StoreMVC.Areas.Admin.Controllers
                 var result = await service.GetOne(product.ProductSubCategoryId);
                 categoryId = result.ProductCategoryId;
             }
+
             //Obtiene todos los padres y selecciona el especifico
             using (var service = new CrudService<int, mProductCategory>("ProductCategories"))
             {

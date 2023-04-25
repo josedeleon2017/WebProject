@@ -74,6 +74,21 @@
 
                                 </div>
                                 <div class="col">
+                                    <div class="row">
+                                        <div class="form-group col-6">
+                                            <label class="control-label">Region</label>
+                                            <select asp-items="ViewBag.RegionList" class="form-control" id="RegionList">
+                                                <option disabled selected>-- Select Region --</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-6">
+                                            <label asp-for="Address.StateId" class="control-label">State</label>
+                                            <select asp-for="Address.StateId" class="form-control" id="StateList">
+                                                <option disabled selected>-- Select State --</option>
+                                            </select>
+                                            <span asp-validation-for="Address.StateId" class="text-danger"></span>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label asp-for="Address.AddressLine1" class="control-label"></label>
                                         <input asp-for="Address.AddressLine1" class="form-control" />
@@ -118,6 +133,27 @@
 </section>
 
 @section Scripts {
+
+    <script>
+        $(document).ready(() => {
+
+            $("#RegionList").on("change", function () {
+                $.ajax({
+                    type: "Post",
+                    url: "/Identity/Identity/GetStates",
+                    data: { "StateId": $("#RegionList").val() },
+                    success: function (response) {
+                        var items = '<option disabled selected>-- Select State --</option>';
+                        $(response).each(function () {
+                            items += "<option value=" + this.value + ">" + this.text + "</option>";
+                        })
+                        $("#StateList").html(items);
+                    }
+                })
+            });
+
+        });
+    </script>
 
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
