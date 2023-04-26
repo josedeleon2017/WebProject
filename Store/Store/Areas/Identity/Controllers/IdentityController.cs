@@ -58,13 +58,13 @@ namespace StoreMVC.Areas.Identity.Controllers
                         ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                         await HttpContext.SignInAsync(claimsPrincipal);
 
-                        if (Url.IsLocalUrl(TempData["returnUrl"].ToString()))
+                        if (!string.IsNullOrEmpty(Convert.ToString(TempData["returnUrl"])))
                         {
                             return Redirect(TempData["returnUrl"].ToString());
                         }
                         else
                         {
-                            return RedirectToAction(nameof(HomeController.Index), "Home");
+                            return RedirectToAction("Principal", "Home", new { area = "Customer" });
                         }
                     }
                     else
@@ -155,6 +155,79 @@ namespace StoreMVC.Areas.Identity.Controllers
             }
         }
 
+
+
+        public ActionResult LoginPrivate(string? returnUrl)
+        {
+            TempData["returnUrl"] = returnUrl;
+            return View();
+        }
+
+        //POST: IdentityController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> LoginPrivate(LoginModel login)
+        {
+            try
+            {
+                using (var service = new CrudService<int, mEmployee>("Employees"))
+                {
+                    //busca un usuario con ese correo
+                    var employees = await service.GetAll();
+                    var employeeMatch = employees.FirstOrDefault(x => x.LoginId == login.Email);
+                    if (employeeMatch == null)
+                    {
+                        TempData["error"] = "User doesnt exist!";
+                        return View(login);
+                    }
+
+                    //valida que las credenciales concuerden
+                    if (employeeMatch.LoginId == login.Email && employeeMatch.Password == Utilities.Cipher.Encrypt(login.Password))
+                    {
+                        List<Claim> claims = new List<Claim>()
+                        {
+                            new Claim(ClaimTypes.NameIdentifier, Convert.ToString(employeeMatch.EmployeeId)),
+                            new Claim(ClaimTypes.Email, employeeMatch.LoginId),
+                            new Claim("userName", $"{employeeMatch.FirstName.ToUpper()} {employeeMatch.LastName.ToUpper()}"),
+                            new Claim(ClaimTypes.Role, $"{employeeMatch.RoleId}"),
+                        };
+                        ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                        ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                        await HttpContext.SignInAsync(claimsPrincipal);
+
+                        if (!string.IsNullOrEmpty(Convert.ToString(TempData["returnUrl"])))
+                        {
+                            return Redirect(TempData["returnUrl"].ToString());
+                        }
+                        else
+                        {
+                            //var type = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value);
+
+                            if (employeeMatch.RoleId == 1)
+                            {
+                                //empleado                                
+                                //return RedirectToAction("PrincipalEmployee", "Managment", new { area = "Admin" });
+                                return RedirectToAction("pEmployee", "Employee", new { area = "Admin" });
+                            }
+                            else
+                            {
+                                //admin
+                                return RedirectToAction("pAdmin", "Employee", new { area = "Admin" });
+                            }
+                        }
+                    }
+                    else
+                    {
+                        TempData["error"] = "Credentials not match!";
+                        return View(login);
+                    }
+                }
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         [HttpPost]
         public async Task<JsonResult> GetStates(string stateId)

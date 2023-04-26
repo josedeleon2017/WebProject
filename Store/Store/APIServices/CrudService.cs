@@ -113,9 +113,9 @@ namespace Store.APIServices
             }
         }
 
-        public async Task<V> Update(K id, V category)
+        public async Task<V> Update(K id, V val)
         {
-            var json = JsonConvert.SerializeObject(category);
+            var json = JsonConvert.SerializeObject(val);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             HttpClientHandler clientHandler = new()

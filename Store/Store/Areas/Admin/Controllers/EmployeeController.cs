@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Store.APIServices;
 using StoreModels.Models;
+using System.Security.Claims;
 using System.Xml.Linq;
 
 namespace StoreMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class EmployeeController : Controller
     {
         private string _apiControllerName = "Employees";
@@ -20,14 +23,29 @@ namespace StoreMVC.Areas.Admin.Controllers
         // GET: EmployeeController
         public async Task<IActionResult> Index()
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+
             using (var service = new CrudService<int, mEmployee>(_apiControllerName))
             {
-                return View(await service.GetAll());
+                var list = await service.GetAll();
+                for (int i = 0; i < list.Count(); i++)
+                {
+                    list.ElementAt(i).Password = Utilities.Cipher.Decrypt(list.ElementAt(i).Password);
+                }
+                return View(list);
             }
         }
 
         public ActionResult Create()
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+
             return View();
         }
 
@@ -35,6 +53,11 @@ namespace StoreMVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(mEmployee employee, IFormFile? PhotoPath)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+
             //ModelState.Remove("PhotoPath");
             ModelState.Remove("LoginId");
             ModelState.Remove("Password");
@@ -59,7 +82,7 @@ namespace StoreMVC.Areas.Admin.Controllers
 
                 using (var service = new CrudService<int, mEmployee>(_apiControllerName))
                 {
-                    employee.Password = "web2023";
+                    employee.Password = Utilities.Cipher.Encrypt("web2023");
                     using (var serviceAux = new CrudService<int, mEmployee>(_apiControllerName))
                     {
                         var employees = await service.GetAll();
@@ -89,9 +112,16 @@ namespace StoreMVC.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+
             using (var service = new CrudService<int, mEmployee>(_apiControllerName))
             {
-                return View(await service.GetOne(id));
+                var employee = await service.GetOne(id);
+                employee.Password = Utilities.Cipher.Decrypt(employee.Password);
+                return View(employee);
             }
         }
 
@@ -99,6 +129,16 @@ namespace StoreMVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, mEmployee employee, IFormFile? PhotoPath)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 1)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+
             if (id != employee.EmployeeId)
             {
                 return NotFound();
@@ -131,25 +171,7 @@ namespace StoreMVC.Areas.Admin.Controllers
 
                 using (var service = new CrudService<int, mEmployee>(_apiControllerName))
                 {
-                    using (var serviceAux = new CrudService<int, mEmployee>(_apiControllerName))
-                    {
-                        var employees = await service.GetAll();
-                        var currentID = employee.FirstName.Trim().ToUpper() + employee.LastName.Trim().ToUpper();
-                        bool notExist = false;
-                        while (!notExist)
-                        {
-                            var test = employees.Where(x => x.LoginId == currentID && x.EmployeeId != employee.EmployeeId).FirstOrDefault();
-                            if (test == null)
-                            {
-                                employee.LoginId = currentID;
-                                break;
-                            }
-                            else
-                            {
-                                currentID += new Random().Next(1, 9).ToString();
-                            }
-                        }
-                    }
+                    employee.Password = Utilities.Cipher.Encrypt(employee.Password);
                     await service.Update(id, employee);
                     TempData["success"] = "Employee updated succesfully!";
                 }
@@ -158,9 +180,79 @@ namespace StoreMVC.Areas.Admin.Controllers
             return View(employee);
         }
 
+        public async Task<IActionResult> EditLimited(int id)
+        {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 1)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+
+            using (var service = new CrudService<int, mEmployee>(_apiControllerName))
+            {
+                var employee = await service.GetOne(id);
+                employee.Password = Utilities.Cipher.Decrypt(employee.Password);
+                return View(employee);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditLimited(int id, mEmployee employee, IFormFile? PhotoPath)
+        {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 1)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+
+            if (id != employee.EmployeeId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                string wwwPath = _webHostEnvironment.WebRootPath;
+                if (PhotoPath != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(PhotoPath.FileName);
+                    string productPath = Path.Combine(wwwPath, @"storage\employees");
+
+                    //delete old image
+                    if (!string.IsNullOrEmpty(employee.PhotoPath))
+                    {
+                        var pathImageDelete = Path.Combine(wwwPath, employee.PhotoPath.TrimStart('\\'));
+                        if (System.IO.File.Exists(pathImageDelete))
+                        {
+                            System.IO.File.Delete(pathImageDelete);
+                        }
+                    }
+
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                    {
+                        PhotoPath.CopyTo(fileStream);
+                    }
+                    employee.PhotoPath = @"\storage\employees\" + fileName;
+                }
+
+                using (var service = new CrudService<int, mEmployee>(_apiControllerName))
+                {
+                    employee.Password = Utilities.Cipher.Encrypt(employee.Password);
+                    await service.Update(id, employee);
+                    TempData["success"] = "Employee updated succesfully!";
+                }
+                return RedirectToAction("pEmployee", "Employee", new { area = "Admin" });
+            }
+            return View(employee);
+        }
+
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+
             //delete image
             using (var service = new CrudService<int, mEmployee>(_apiControllerName))
             {
@@ -183,6 +275,33 @@ namespace StoreMVC.Areas.Admin.Controllers
                 await service.Delete(id);
                 //return RedirectToAction(nameof(Index));
                 return Json(new { success = true });
+            }
+        }
+
+
+        public async Task<IActionResult> pEmployee()
+        {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 1)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+            using (var service = new CrudService<int, mEmployee>("Employees"))
+            {
+                var id = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+                return View(await service.GetOne(id));
+            }
+        }
+
+        public async Task<IActionResult> pAdmin()
+        {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
+            using (var service = new CrudService<int, mEmployee>("Employees"))
+            {
+                var id = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+                return View(await service.GetOne(id));
             }
         }
     }

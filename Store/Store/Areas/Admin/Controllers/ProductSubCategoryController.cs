@@ -1,18 +1,25 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Store.APIServices;
 using StoreModels.Models;
+using System.Security.Claims;
 
 namespace StoreMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ProductSubCategoryController : Controller
     {
         private string _apiControllerName = "ProductSubCategories";
 
         public async Task<IActionResult> Index()
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             using (var service = new CrudService<int, mProductCategory>("ProductCategories"))
             {
                 var categories = await service.GetAll();
@@ -26,6 +33,10 @@ namespace StoreMVC.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             using (var service = new CrudService<int, mProductCategory>("ProductCategories"))
             {
                 var categories = await service.GetAll();
@@ -43,6 +54,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(mProductSubCategory subcategory)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             if (ModelState.IsValid)
             {
                 using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
@@ -57,6 +72,10 @@ namespace StoreMVC.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
             {
                 var subcategory = await service.GetOne(id);
@@ -79,6 +98,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, mProductSubCategory subcategory)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             if (id != subcategory.ProductSubCategoryId)
             {
                 return NotFound();
@@ -99,6 +122,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             using (var service = new CrudService<int, mProductSubCategory>(_apiControllerName))
             {
                 await service.Delete(id);

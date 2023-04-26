@@ -142,7 +142,7 @@ namespace StoreAPI.Controllers
             var productInventory = await _context.ProductInventories.FindAsync(id);
             if (productInventory == null)
             {
-                return NotFound();
+                return NoContent();
             }
 
             _context.ProductInventories.Remove(productInventory);

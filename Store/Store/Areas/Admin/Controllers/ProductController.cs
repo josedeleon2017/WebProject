@@ -1,14 +1,17 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Store.APIServices;
 using StoreModels.Models;
 using System.Net.WebSockets;
+using System.Security.Claims;
 
 namespace StoreMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ProductController : Controller
     {
         private string _apiControllerName = "Products";
@@ -21,6 +24,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         // GET: ProductController
         public async Task<IActionResult> Index()
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             using (var service = new CrudService<int, mProduct>(_apiControllerName))
             {
                 return View(await service.GetAll());
@@ -30,6 +37,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         // GET: ProductController/Details/5
         public async Task<IActionResult> Preview(int id)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             using (var service = new CrudService<int, mProduct>(_apiControllerName))
             {
                 return View(await service.GetOne(id));
@@ -38,6 +49,10 @@ namespace StoreMVC.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             using (var service = new CrudService<int, mProductCategory>("ProductCategories"))
             {
                 var categories = await service.GetAll();
@@ -55,6 +70,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(mProduct product, IFormFile? file)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             ModelState.Remove("ImagePath");
             if (ModelState.IsValid)
             {
@@ -88,6 +107,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         // GET: ProductController/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             //Obtiene el product
             mProduct product;
             using (var service = new CrudService<int, mProduct>(_apiControllerName))
@@ -135,7 +158,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, mProduct product, IFormFile? file)
         {
-
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             if (id != product.ProductId)
             {
                 return NotFound();
@@ -179,6 +205,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             //delete image
             using (var service = new CrudService<int, mProduct>(_apiControllerName))
             {
@@ -203,8 +233,9 @@ namespace StoreMVC.Areas.Admin.Controllers
             //delete object
             using (var service = new CrudService<int, mProduct>(_apiControllerName))
             {
-                TempData["success"] = "Product deleted succesfully!";
+
                 await service.Delete(id);
+                TempData["success"] = "Product deleted succesfully!";
                 //return RedirectToAction(nameof(Index));
                 return Json(new { success = true });
             }

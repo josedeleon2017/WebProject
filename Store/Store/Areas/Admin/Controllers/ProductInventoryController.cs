@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Store.APIServices;
 using StoreModels.Models;
+using System.Security.Claims;
 
 namespace StoreMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class ProductInventoryController : Controller
     {
         private string _apiControllerName = "ProductInventories";
@@ -15,6 +18,10 @@ namespace StoreMVC.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create(int id)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             using (var service = new CrudService<int, mProduct>("Products"))
             {
                 var product = await service.GetOne(id);
@@ -28,6 +35,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(mProductInventory productInventory)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             if (ModelState.IsValid)
             {
                 using (var service = new CrudService<int, mProductInventory>(_apiControllerName))
@@ -53,6 +64,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         // GET: ProductInventoryController/Details/5
         public async Task<IActionResult> Inventory(int id)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             using (var service = new CrudService<int, mProductInventory>(_apiControllerName))
             {
                 var inventory = await service.GetOne(id);
@@ -74,6 +89,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         // GET: ProductInventoryController/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             using (var service = new CrudService<int, mProduct>("Products"))
             {
                 var product = await service.GetOne(id);
@@ -90,6 +109,10 @@ namespace StoreMVC.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, mProductInventory productInventory)
         {
+            if (Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value) != 2)
+            {
+                return RedirectToAction("Logout", "Identity", new { area = "Identity" });
+            }
             if (id != productInventory.ProductId)
             {
                 return NotFound();

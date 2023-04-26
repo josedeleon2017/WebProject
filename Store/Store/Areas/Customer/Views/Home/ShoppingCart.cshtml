@@ -1,0 +1,72 @@
+﻿@model IEnumerable<StoreMVC.Models.ProductCartItemVM>
+
+@{
+    ViewData["Title"] = "ShoppingCart";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="pagetitle">
+            <h1>@ViewData["Title"]</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Components</li>
+                    <li class="breadcrumb-item active">Breadcrumbs</li>
+                </ol>
+            </nav>
+        </div><!-- End Breadcrumbs with a page title -->
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">SubTotal</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row" class="p-2">
+                            <a href="@item.Product.ImagePath"><img src='@item.Product.ImagePath' alt="" height="150" width="150"></a>
+                        </th>
+                        <td>
+                            <h6 class="p-0 m-0 fw-bold">@item.Product.Name</h6>
+                            @Html.DisplayFor(modelItem => item.Product.Specifications)
+                        </td>
+                        <td>
+                            $@Html.DisplayFor(modelItem => item.Product.ListPrice) x @Html.DisplayFor(modelItem => item.CartItem.OrderQty) =
+                            <br>
+                            &nbsp; $@Html.DisplayFor(modelItem => item.SubTotal)
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                @* <a asp-action="Edit" asp-controller="ShoppingCartItem" asp-route-id="@item.CartItem.ShoppingCartItemId" class="btn btn-primary">
+                            <i class="bi bi-pencil-square"></i>&nbsp; Edit
+                            </a>*@
+                                <a onClick=Delete('/customer/home/delete/@item.CartItem.ShoppingCartItemId') class="btn btn-danger">
+                                    <i class="bi bi-trash-fill"></i>&nbsp; Delete
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="row justify-content-end fw-bold">
+            TOTAL: $@ViewBag.Total.ToString("0.00")
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/js/deleteAction.js"></script>
+}

@@ -59,13 +59,71 @@ namespace StoreMVC.Areas.Customer.Controllers
         public async Task<IActionResult> Detail(ProductCartItemVM item)
         {
             //cartItem
+            var customer = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
             using (var service = new CrudService<int, mShoppingCartItem>("ShoppingCartItems"))
             {
-                item.CartItem.CustomerId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
-                item.CartItem.DateCreated = DateTime.Now;
-                await service.Add(item.CartItem);
+                var existItem = await service.GetAll();
+                var itemMod = existItem.FirstOrDefault(x => x.ProductId == item.CartItem.ProductId && x.CustomerId == customer);
+                if (itemMod != null)
+                {
+                    var mod = await service.GetOne(itemMod.ShoppingCartItemId);
+                    mod.OrderQty += item.CartItem.OrderQty;
+                    mod.DateCreated = DateTime.Now;
+                    await service.Update(mod.ShoppingCartItemId, mod);
+                }
+                else
+                {
+                    item.CartItem.CustomerId = customer;
+                    item.CartItem.DateCreated = DateTime.Now;
+                    await service.Add(item.CartItem);
+                }
                 TempData["success"] = "Item added to ShoppingCart!";
                 return RedirectToAction("Principal", "Home", new { area = "Customer" });
+            }
+        }
+
+        [Authorize]
+        public async Task<IActionResult> ShoppingCart()
+        {
+            List<ProductCartItemVM> pca = new List<ProductCartItemVM>();
+            decimal total = 0;
+            var customer = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+
+            //get all items
+            using (var service = new CrudService<int, mShoppingCartItem>("ShoppingCartItems"))
+            {
+                var items = await service.GetAll();
+                var itemList = items.Where(x => x.CustomerId == customer).ToList();
+
+                //get all products
+                for (int i = 0; i < itemList.Count; i++)
+                {
+                    using (var service2 = new CrudService<int, mProduct>("Products"))
+                    {
+                        var product = await service2.GetOne(itemList.ElementAt(i).ProductId);
+                        ProductCartItemVM tmp = new ProductCartItemVM();
+                        tmp.CartItem = itemList.ElementAt(i);
+                        tmp.Product = product;
+                        total += product.ListPrice * tmp.CartItem.OrderQty;
+                        tmp.SubTotal = product.ListPrice * tmp.CartItem.OrderQty;
+                        pca.Add(tmp);
+                    }
+                }
+            }
+            ViewBag.Total = total;
+            return View(pca);
+        }
+
+        [HttpDelete]
+        [Authorize]
+        public async Task<IActionResult> Delete(int id)
+        {
+            using (var service = new CrudService<int, mShoppingCartItem>("ShoppingCartItems"))
+            {
+                TempData["success"] = "CartItem deleted succesfully!";
+                await service.Delete(id);
+                //return RedirectToAction(nameof(Index));
+                return Json(new { success = true });
             }
         }
 

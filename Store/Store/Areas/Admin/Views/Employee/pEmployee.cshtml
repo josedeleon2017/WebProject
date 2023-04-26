@@ -1,5 +1,111 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model StoreModels.Models.mEmployee
+
 @{
+    ViewData["Title"] = "Employee Panel";
 }
+
+<div class="row">
+    <div class="col-6">
+        <div class="pagetitle">
+            <h1>@ViewData["Title"]</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Components</li>
+                    <li class="breadcrumb-item active">Breadcrumbs</li>
+                </ol>
+            </nav>
+        </div><!-- End Breadcrumbs with a page title -->
+    </div>
+
+</div>
+
+
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.PhotoPath)
+            </th>
+
+            <th scope="col">
+                FullName
+            </th>
+
+            <th scope="col">
+                CUI
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <th scope="row" class="p-2"><a href="@Model.PhotoPath"><img src='@Model.PhotoPath' alt="" height="150" width="150"></a></th>
+            <td>
+                @Html.DisplayFor(modelItem =>  Model.FirstName)
+                @Html.DisplayFor(modelItem => Model.MiddleName)
+                @Html.DisplayFor(modelItem => Model.LastName)
+                <br>
+                @if (Model.RoleId != 1)
+                {
+                    <span class="badge bg-success">Admin</span>
+                }
+                else
+                {
+                    <span class="badge bg-primary">Employee</span>
+                }
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => Model.NationalNumberId)
+            </td>
+            <td>
+                @Model.BirthDate.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Gender)
+            </td>
+            <td>
+                <div class="btn-group" role="group">
+                    <a asp-action="EditLimited" asp-controller="Employee" asp-route-id="@Model.EmployeeId" class="btn btn-primary">
+                        <i class="bi bi-pencil-square"></i>&nbsp; Edit
+                    </a>
+                </div>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+<div class="container-fluid pt-3">
+    <div class="row">
+
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+            <!-- Card with an image on top -->
+            <div class="card h-100">
+                <img src="~/assets/img/card.jpg" class="card-img-top w-100 animate__animated animate__zoomIn" alt="...">
+                <div class="card-body pb-0">
+                    <h5 class="card-title">Administración de ordenes</h5>
+                    <p class="card-text">Seguimiento a las ordenes generadas por los clientes, aprobación, monitoreo y comprobación.</p>
+                    <div class="row w-100">
+                        <a asp-action="Index" asp-controller="Product" asp-area="Admin" class="col px-0">
+                            <div class="small text-center">
+                                <i class="bi bi-gear-fill"></i>&nbsp; Acceder
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div><!-- End Card with an image on top -->
+        </div>        
+
+    </div>
+</div>      

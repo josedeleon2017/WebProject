@@ -22,10 +22,6 @@
             <i class="bi bi-plus-square-fill"></i>
             &nbsp; Add Product
         </a>
-        <a asp-controller="Product" asp-action="Details" class="btn btn-success">
-            <i class="bi bi-plus-square-fill"></i>
-            &nbsp; OJO
-        </a>
     </div>
 </div>
 
@@ -170,7 +166,7 @@
                         <a asp-action="Inventory" asp-controller="ProductInventory" asp-route-id="@item.ProductId" class="btn btn-secondary text-white">
                             <i class="bi bi-cart-plus-fill"></i>&nbsp; Inventory
                         </a>
-                        <a onClick=Delete('/product/delete/@item.ProductId') class="btn btn-danger">
+                        <a onClick=Delete('/admin/product/delete/@item.ProductId') class="btn btn-danger">
                             <i class="bi bi-trash-fill"></i>&nbsp; Delete
                         </a>
                     </div>
