@@ -42,6 +42,27 @@ namespace StoreAPI.Controllers
             return listResult;
         }
 
+        // GET: api/ProductCategories/5        
+        [HttpGet("{id}")]
+        public async Task<ActionResult<mState>> GetState(int id)
+        {
+            if (_context.States == null)
+            {
+                return NotFound();
+            }
+            var state = await _context.States.FindAsync(id);
 
+            if (state == null)
+            {
+                return NotFound();
+            }
+            var result = new mState()
+            {
+                StateId = state.StateId,
+                RegionId = state.RegionId,
+                Name = state.Name,
+            };
+            return result;
+        }
     }
 }

@@ -17,8 +17,20 @@
       "PackagePath": "staticwebassets\\assets\\img\\card.jpg"
     },
     {
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\categorias.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\categorias.jpg"
+    },
+    {
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\empleados.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\empleados.jpg"
+    },
+    {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\favicon.png",
       "PackagePath": "staticwebassets\\assets\\img\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\inventarios.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\inventarios.jpg"
     },
     {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\logo.png",
@@ -59,6 +71,10 @@
     {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\not-found.svg",
       "PackagePath": "staticwebassets\\assets\\img\\not-found.svg"
+    },
+    {
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\ordenes.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\ordenes.jpg"
     },
     {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\product-1.jpg",
@@ -107,6 +123,10 @@
     {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\slides-33.jpg",
       "PackagePath": "staticwebassets\\assets\\img\\slides-33.jpg"
+    },
+    {
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\subcategorias.jpg",
+      "PackagePath": "staticwebassets\\assets\\img\\subcategorias.jpg"
     },
     {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\js\\main.js",
@@ -1933,8 +1953,12 @@
       "PackagePath": "staticwebassets\\storage\\employees\\0f471cf2-97aa-4899-a5f7-0c47e9a839e4.jpg"
     },
     {
-      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\employees\\4b8f2859-38ac-4126-a991-2ea04dc2f29c.jpg",
-      "PackagePath": "staticwebassets\\storage\\employees\\4b8f2859-38ac-4126-a991-2ea04dc2f29c.jpg"
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\employees\\348bf383-4a60-4a81-92db-0478d66f25ba.jpg",
+      "PackagePath": "staticwebassets\\storage\\employees\\348bf383-4a60-4a81-92db-0478d66f25ba.jpg"
+    },
+    {
+      "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\products\\6cd0a806-e923-453b-93ee-9e89a7b6fb3b.jpg",
+      "PackagePath": "staticwebassets\\storage\\products\\6cd0a806-e923-453b-93ee-9e89a7b6fb3b.jpg"
     },
     {
       "Id": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\products\\726eda23-13a9-49d4-9570-0fd8f8927ff7.jpg",

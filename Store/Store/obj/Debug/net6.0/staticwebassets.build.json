@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mdf/kaN8qImu8boJyNx+xiVnSfWb4NIcary+BJ20Juk=",
+  "Hash": "VSL3CAyHH0EKSg5XdafDVaQY/habHSVkvbjSzC3XMZo=",
   "Source": "StoreMVC",
   "BasePath": "_content/StoreMVC",
   "Mode": "Default",
@@ -102,6 +102,40 @@
       "OriginalItemSpec": "wwwroot\\assets\\img\\card.jpg"
     },
     {
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\categorias.jpg",
+      "SourceId": "StoreMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\",
+      "BasePath": "_content/StoreMVC",
+      "RelativePath": "assets/img/categorias.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\categorias.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\empleados.jpg",
+      "SourceId": "StoreMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\",
+      "BasePath": "_content/StoreMVC",
+      "RelativePath": "assets/img/empleados.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\empleados.jpg"
+    },
+    {
       "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\favicon.png",
       "SourceId": "StoreMVC",
       "SourceType": "Discovered",
@@ -117,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\inventarios.jpg",
+      "SourceId": "StoreMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\",
+      "BasePath": "_content/StoreMVC",
+      "RelativePath": "assets/img/inventarios.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\inventarios.jpg"
     },
     {
       "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\logo.png",
@@ -287,6 +338,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\not-found.svg"
+    },
+    {
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\ordenes.jpg",
+      "SourceId": "StoreMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\",
+      "BasePath": "_content/StoreMVC",
+      "RelativePath": "assets/img/ordenes.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\ordenes.jpg"
     },
     {
       "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\product-1.jpg",
@@ -491,6 +559,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\slides-33.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\img\\subcategorias.jpg",
+      "SourceId": "StoreMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\",
+      "BasePath": "_content/StoreMVC",
+      "RelativePath": "assets/img/subcategorias.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\img\\subcategorias.jpg"
     },
     {
       "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\assets\\js\\main.js",
@@ -8245,12 +8330,12 @@
       "OriginalItemSpec": "wwwroot\\storage\\employees\\0f471cf2-97aa-4899-a5f7-0c47e9a839e4.jpg"
     },
     {
-      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\employees\\4b8f2859-38ac-4126-a991-2ea04dc2f29c.jpg",
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\employees\\348bf383-4a60-4a81-92db-0478d66f25ba.jpg",
       "SourceId": "StoreMVC",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\",
       "BasePath": "_content/StoreMVC",
-      "RelativePath": "storage/employees/4b8f2859-38ac-4126-a991-2ea04dc2f29c.jpg",
+      "RelativePath": "storage/employees/348bf383-4a60-4a81-92db-0478d66f25ba.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -8259,7 +8344,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\storage\\employees\\4b8f2859-38ac-4126-a991-2ea04dc2f29c.jpg"
+      "OriginalItemSpec": "wwwroot\\storage\\employees\\348bf383-4a60-4a81-92db-0478d66f25ba.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\products\\6cd0a806-e923-453b-93ee-9e89a7b6fb3b.jpg",
+      "SourceId": "StoreMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\",
+      "BasePath": "_content/StoreMVC",
+      "RelativePath": "storage/products/6cd0a806-e923-453b-93ee-9e89a7b6fb3b.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\storage\\products\\6cd0a806-e923-453b-93ee-9e89a7b6fb3b.jpg"
     },
     {
       "Identity": "C:\\Users\\50241\\Desktop\\NEW_WEB2.0\\WebProject\\Store\\Store\\wwwroot\\storage\\products\\726eda23-13a9-49d4-9570-0fd8f8927ff7.jpg",

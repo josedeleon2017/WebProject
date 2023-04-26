@@ -304,5 +304,6 @@ namespace StoreMVC.Areas.Admin.Controllers
                 return View(await service.GetOne(id));
             }
         }
+
     }
 }

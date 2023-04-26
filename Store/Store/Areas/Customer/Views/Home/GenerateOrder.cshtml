@@ -1,0 +1,150 @@
+﻿@model StoreMVC.Models.OrderVM
+
+@{
+    ViewData["Title"] = "GenerateOrder";
+}
+
+<div class="row">
+    <div class="col-6">
+        <div class="pagetitle">
+            <h1>@ViewData["Title"]</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Components</li>
+                    <li class="breadcrumb-item active">Breadcrumbs</li>
+                </ol>
+            </nav>
+        </div><!-- End Breadcrumbs with a page title -->
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-6">
+        <form asp-action="GenerateOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Address.AddressId" class="form-control" type="hidden" />
+            <input asp-for="OrderHeader.TotalDue" class="form-control" type="hidden" />
+
+            <h5 class="pt-2"><bold>Address information</bold></h5>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label class="control-label">Region</label>
+                    <select asp-items="ViewBag.RegionList" class="form-control" id="RegionList">
+                        <option disabled selected>-- Select Region --</option>
+                    </select>
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="Address.StateId" class="control-label">State</label>
+                    <select asp-items="ViewBag.StateList" class="form-control" id="StateList">
+                        <option disabled selected>-- Select State --</option>
+                    </select>
+                    <span asp-validation-for="Address.StateId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.AddressLine1" class="control-label"></label>
+                <input asp-for="Address.AddressLine1" class="form-control" />
+                <span asp-validation-for="Address.AddressLine1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.AddressLine2" class="control-label"></label>
+                <input asp-for="Address.AddressLine2" class="form-control" />
+                <span asp-validation-for="Address.AddressLine2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address.PostalCode" class="control-label"></label>
+                <input asp-for="Address.PostalCode" class="form-control" />
+                <span asp-validation-for="Address.PostalCode" class="text-danger"></span>
+            </div>            
+            <h5 class="pt-2 font-weight-bold">
+                <bold> Payment Method</bold>
+            </h5>
+            <div class="form-group">
+                <label asp-for="OrderHeader.CardNumber" class="control-label"></label>
+                <input asp-for="OrderHeader.CardNumber" class="form-control" />
+                <span asp-validation-for="OrderHeader.CardNumber" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label asp-for="OrderHeader.ExpMonth" class="control-label"></label>
+                    <input asp-for="OrderHeader.ExpMonth" class="form-control" />
+                    <span asp-validation-for="OrderHeader.ExpMonth" class="text-danger"></span>
+                </div>
+                <div class="form-group col-6">
+                    <label asp-for="OrderHeader.ExpYear" class="control-label"></label>
+                    <input asp-for="OrderHeader.ExpYear" class="form-control" />
+                    <span asp-validation-for="OrderHeader.ExpYear" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group pt-2">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="ShoppingCart" asp-controller="Home" class="btn btn-danger">Back to Panel</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-6">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">SubTotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CartVM)
+                {
+                    <tr>
+                        <th scope="row" class="p-2">
+                            <a href="@item.Product.ImagePath"><img src='@item.Product.ImagePath' alt="" height="150" width="150"></a>
+                        </th>
+                        <td>
+                            @item.Product.Name
+                        </td>
+                        <td>
+                            $@Html.DisplayFor(modelItem => item.Product.ListPrice) x @Html.DisplayFor(modelItem => item.CartItem.OrderQty) =
+                            <br>
+                            &nbsp; $@Html.DisplayFor(modelItem => item.SubTotal)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="row justify-content-end fw-bold">
+            TOTAL: $@ViewBag.Total.ToString("0.00")
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+
+    <script>
+        $(document).ready(() => {
+
+            $("#RegionList").on("change", function () {
+                $.ajax({
+                    type: "Post",
+                    url: "/Identity/Identity/GetStates",
+                    data: { "StateId": $("#RegionList").val() },
+                    success: function (response) {
+                        var items = '<option disabled selected>-- Select State --</option>';
+                        $(response).each(function () {
+                            items += "<option value=" + this.value + ">" + this.text + "</option>";
+                        })
+                        $("#StateList").html(items);
+                    }
+                })
+            });
+
+        });
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}
