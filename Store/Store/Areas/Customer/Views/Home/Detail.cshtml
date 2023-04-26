@@ -1,4 +1,4 @@
-﻿@model StoreModels.Models.mProduct
+﻿@model StoreMVC.Models.ProductCartItemVM
 
 @{
     ViewData["Title"] = "Product";
@@ -35,27 +35,31 @@
                     <div id="carouselExampleSlidesOnly" class="carousel slide p-4" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src='@Model.ImagePath' class="d-block w-100" alt="..." id="preview">
+                                <img src='@Model.Product.ImagePath' class="d-block w-100" alt="..." id="preview">
                             </div>
                         </div>
                     </div><!-- End Slides only carousel-->
                 </div>
                 <div class="col-md-7">
                     <div class="card-body">
-                        <h5 class="card-title" id="prName">@Html.DisplayFor(model => model.Name)</h5>
-                        <p class="card-text fw-bold" id="prListPrice">@Html.DisplayFor(model => model.ListPrice)</p>
-                        <p class="card-text" id="prDescription">@Html.DisplayFor(model => model.Description)</p>
-                        <div class="row">
-                            <div class="col-3">
-                                <input type="number" class="form-control" value="1">
+                        <h5 class="card-title" id="prName">@Html.DisplayFor(model => model.Product.Name)</h5>
+                        <p class="card-text fw-bold" id="prListPrice">@Html.DisplayFor(model => model.Product.ListPrice)</p>
+                        <p class="card-text" id="prDescription">@Html.DisplayFor(model => model.Product.Description)</p>
+                        <form asp-action="Detail">
+                            <div class="row">
+                                <div class="col-3">
+                                    <input asp-for="CartItem.OrderQty" type="number" class="form-control" value="@Model.CartItem.OrderQty">
+                                    <input asp-for="CartItem.ProductId" class="form-control" type="hidden">
+                                </div>
+                                <div class="col-9">
+                                    <button class="btn btn-success" type="submit">
+                                        <i class="bi bi-cart-fill"></i>
+                                        &nbsp; Add To Cart
+                                    </button>
+                                    @*<button class="btn btn-primary w-100" type="submit">Create Account</button>*@
+                                </div>
                             </div>
-                            <div class="col-9">
-                                <a href="#" class="btn btn-success">
-                                    <i class="bi bi-cart-fill"></i>
-                                    &nbsp; Add To Cart
-                                </a>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -71,7 +75,7 @@
                 </ul>
                 <div class="tab-content pt-2" id="borderedTabJustifiedContent">
                     <div class="tab-pane fade show active" id="bordered-justified-home" role="tabpanel" aria-labelledby="home-tab">
-                        @Html.DisplayFor(model => model.Specifications)
+                        @Html.DisplayFor(model => model.Product.Specifications)
                     </div>
                     <div class="tab-pane fade" id="bordered-justified-profile" role="tabpanel" aria-labelledby="profile-tab">
                         Reviews

@@ -6,6 +6,7 @@ using StoreModels.Models;
 using StoreMVC.APIServices;
 using StoreMVC.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace StoreMVC.Areas.Customer.Controllers
 {
@@ -38,13 +39,33 @@ namespace StoreMVC.Areas.Customer.Controllers
             return View(content);
         }
 
-        [Authorize]
         public async Task<IActionResult> Detail(int id)
         {
-            //Modificar para que use itemProduct
-            using (var service = new ProductServices())
+            ProductCartItemVM cartItemVM = new ProductCartItemVM();
+            cartItemVM.CartItem = new mShoppingCartItem();
+            //products
+            using (var service = new CrudService<int, mProduct>("Products"))
             {
-                return View(await service.GetOneProductUser(id));
+                var product_result = await service.GetOne(id);
+                cartItemVM.Product = product_result;
+            }
+            cartItemVM.CartItem.ProductId = id;
+            cartItemVM.CartItem.OrderQty = 1;
+            return View(cartItemVM);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Detail(ProductCartItemVM item)
+        {
+            //cartItem
+            using (var service = new CrudService<int, mShoppingCartItem>("ShoppingCartItems"))
+            {
+                item.CartItem.CustomerId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+                item.CartItem.DateCreated = DateTime.Now;
+                await service.Add(item.CartItem);
+                TempData["success"] = "Item added to ShoppingCart!";
+                return RedirectToAction("Principal", "Home", new { area = "Customer" });
             }
         }
 

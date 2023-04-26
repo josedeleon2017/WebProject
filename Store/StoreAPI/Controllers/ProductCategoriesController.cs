@@ -14,6 +14,7 @@ namespace StoreAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProductCategoriesController : ControllerBase
     {
         private readonly StoreContext _context;
@@ -23,8 +24,7 @@ namespace StoreAPI.Controllers
             _context = context;
         }
 
-        // GET: api/ProductCategories
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        // GET: api/ProductCategories        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<mProductCategory>>> GetProductCategories()
         {
@@ -37,8 +37,7 @@ namespace StoreAPI.Controllers
             return listResult;
         }
 
-        // GET: api/ProductCategories/5
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        // GET: api/ProductCategories/5        
         [HttpGet("{id}")]
         public async Task<ActionResult<mProductCategory>> GetProductCategory(int id)
         {
@@ -57,8 +56,7 @@ namespace StoreAPI.Controllers
         }
 
         // PUT: api/ProductCategories/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754        
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProductCategory(int id, mProductCategory productCategory)
         {
@@ -92,8 +90,7 @@ namespace StoreAPI.Controllers
         }
 
         // POST: api/ProductCategories
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754        
         [HttpPost]
         public async Task<ActionResult<mProductCategory>> PostProductCategory(mProductCategory productCategory)
         {
@@ -108,8 +105,7 @@ namespace StoreAPI.Controllers
             return CreatedAtAction("GetProductCategory", new { id = productCategory.ProductCategoryId }, productCategory);
         }
 
-        // DELETE: api/ProductCategories/5
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        // DELETE: api/ProductCategories/5        
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProductCategory(int id)
         {

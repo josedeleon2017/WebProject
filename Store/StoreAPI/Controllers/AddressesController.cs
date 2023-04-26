@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreAPI.Models;
@@ -12,6 +14,7 @@ namespace StoreAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AddressesController : ControllerBase
     {
         private readonly StoreContext _context;
@@ -123,8 +126,8 @@ namespace StoreAPI.Controllers
             };
             _context.Addresses.Add(addressToInsert);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAddress", new { id = address.AddressId }, address);
+            address.AddressId = addressToInsert.AddressId;
+            return CreatedAtAction("GetAddress", new { id = addressToInsert.AddressId }, address);
         }
 
         // DELETE: api/Addresses/5
