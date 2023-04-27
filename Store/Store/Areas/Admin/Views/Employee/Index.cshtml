@@ -11,9 +11,8 @@
             <h1>@ViewData["Title"]</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item">Components</li>
-                    <li class="breadcrumb-item active">Breadcrumbs</li>
+                   <li class="breadcrumb-item"><a asp-action="pAdmin" asp-controller="Employee">Admin Panel</a></li>
+                    <li class="breadcrumb-item">@ViewData["Title"]</li>    
                 </ol>
             </nav>
         </div><!-- End Breadcrumbs with a page title -->
@@ -75,28 +74,28 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <th scope="row" class="p-2"><a href="@item.PhotoPath"><img src='@item.PhotoPath' alt="" height="150" width="150"></a></th>
+                <tr>
+                    <th scope="row" class="p-2"><a href="@item.PhotoPath"><img src='@item.PhotoPath' alt="" height="150" width="150"></a></th>
                 @*                <td>
             @Html.DisplayFor(modelItem => item.EmployeeId)
             </td>*@
                 @*                <td>
 
             </td>*@
-                <td>
+                    <td>
                     @Html.DisplayFor(modelItem =>  item.FirstName)
                     @Html.DisplayFor(modelItem => item.MiddleName)
                     @Html.DisplayFor(modelItem => item.LastName)
-                    <br>
+                        <br>
                     @if (item.RoleId != 1)
                     {
-                        <span class="badge bg-success">Admin</span>
+                                <span class="badge bg-success">Admin</span>
                     }
                     else
                     {
-                        <span class="badge bg-primary">Employee</span>
+                                <span class="badge bg-primary">Employee</span>
                     }
-                </td>
+                    </td>
                 @*<td>
             @Html.DisplayFor(modelItem => item.MiddleName)
             </td>
@@ -104,26 +103,26 @@
             @Html.DisplayFor(modelItem => item.LastName)
             </td>*@
 
-                <td>
+                    <td>
                     @Html.DisplayFor(modelItem => item.NationalNumberId)
-                </td>
-                <td>
+                    </td>
+                    <td>
                     @item.BirthDate.ToString("dd/MM/yyyy")
-                </td>
-                <td>
+                    </td>
+                    <td>
                     @Html.DisplayFor(modelItem => item.Gender)
-                </td>
-                <td>
+                    </td>
+                    <td>
                     @Html.DisplayFor(modelItem => item.LoginId)
-                </td>
-                <td>
-                    <input type="password" value="@item.Password" id='@item.EmployeeId' class="form-control" disabled>
-                    <input type="checkbox" onclick=myFunction(@item.EmployeeId) class="form-check-input" id="@item.EmployeeId'i'">
-                    <label class="form-check-label" for="@item.EmployeeId'i'">
-                        Show Password
-                    </label>
+                    </td>
+                    <td>
+                        <input type="password" value="@item.Password" id='@item.EmployeeId' class="form-control" disabled>
+                        <input type="checkbox" onclick=myFunction(@item.EmployeeId) class="form-check-input" id="@item.EmployeeId'i'">
+                        <label class="form-check-label" for="@item.EmployeeId'i'">
+                            Show Password
+                        </label>
                     @*@Html.DisplayFor(modelItem => item.Password)*@
-                </td>
+                    </td>
                 @*<td>
             @Html.DisplayFor(modelItem => item.PhotoFileName)
             </td>
@@ -133,32 +132,32 @@
                 @*                <td>
             @Html.DisplayFor(modelItem => item.PhotoPath)
             </td>*@
-                <td>
-                    <div class="btn-group" role="group">
-                        <a asp-action="Edit" asp-controller="Employee" asp-route-id="@item.EmployeeId" class="btn btn-primary">
-                            <i class="bi bi-pencil-square"></i>&nbsp; Edit
-                        </a>
-                        <a onClick=Delete('/admin/employee/delete/@item.EmployeeId') class="btn btn-danger">
-                            <i class="bi bi-trash-fill"></i>&nbsp; Delete
-                        </a>
-                    </div>
-                </td>
-            </tr>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-action="Edit" asp-controller="Employee" asp-route-id="@item.EmployeeId" class="btn btn-primary">
+                                <i class="bi bi-pencil-square"></i>&nbsp; Edit
+                            </a>
+                            <a onClick=Delete('/admin/employee/delete/@item.EmployeeId') class="btn btn-danger">
+                                <i class="bi bi-trash-fill"></i>&nbsp; Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
         }
     </tbody>
 </table>
 
 @section Scripts {
-    <script>
-        function myFunction(inputId) {
-            var x = document.getElementById(inputId);
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
+        <script>
+            function myFunction(inputId) {
+                var x = document.getElementById(inputId);
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
             }
-        }
-    </script>
-    <script src="~/js/deleteAction.js"></script>
+        </script>
+        <script src="~/js/deleteAction.js"></script>
 }
 
