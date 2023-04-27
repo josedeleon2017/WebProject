@@ -275,6 +275,23 @@ namespace StoreMVC.Areas.Customer.Controllers
                         line.UnitPrice = productTemp.ListPrice;
                         line.UnitPriceDiscount = 0;
                         line.LineTotal = productTemp.ListPrice * line.OrderQty;
+                        product.ProductId = productTemp.ProductId;
+                    }
+
+                    //descuento la cantidad al inventario, se es menor retorna error                    
+                    using (var service2 = new CrudService<int, mProductInventory>("ProductInventories"))
+                    {
+                        var inventory = await service2.GetOne(product.ProductId);
+                        if (inventory.Quantity < line.OrderQty)
+                        {
+                            TempData["error"] = "Insufficient stock!";
+                            return RedirectToAction("Principal", "Home", new { area = "Customer" });
+                        }
+                        else
+                        {
+                            inventory.Quantity = inventory.Quantity - line.OrderQty;
+                            await service2.Update(inventory.ProductId, inventory);
+                        }
                     }
 
                     //guardo en bd la linea
